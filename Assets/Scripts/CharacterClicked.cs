@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CharacterClicked : MonoBehaviour {
+    public GameObject BottomBanner;
+    public bool selected=false;
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+    public void TellBottomBanner()
+    {
+        if (selected == false)
+        {
+            BottomBanner.GetComponent<BottomBanner>().SelectCharacter(this.transform.parent.name);//传入父亲的名字
+            GetComponent<UnityEngine.UI.Image>().color = new Color32(156, 156, 156, 100);
+            Debug.Log("Y");
+            selected = true;
+        }else
+        {
+            BottomBanner.GetComponent<BottomBanner>().CancelCharacter(this.transform.parent.name);
+            selected = false;
+            GetComponent<UnityEngine.UI.Image>().color = new Color32(156, 156, 156, 0);
+        }
+        
+    }
+}
