@@ -22,6 +22,7 @@ public class CharManager : MonoBehaviour {
 		} else {
 			this.enabled = false;
 		}
+		Init();
 	}
 	#endregion
 
@@ -35,6 +36,7 @@ public class CharManager : MonoBehaviour {
 	[System.Serializable]
 	public class CharJson {
 		public CharJsonItem[] data;
+		public int[] basicChar;
 	}
 
 	[System.Serializable]
@@ -69,6 +71,10 @@ public class CharManager : MonoBehaviour {
 		var charTree = JsonConvert.DeserializeObject<CharTree>(charsTree.text);
 		// var charTree = JsonUtility.FromJson(charsTree.text, typeof(CharTree)) as CharTree;
 
+		foreach (var i in charJson.basicChar) {
+			basicCharIds.Add(i);
+		}
+
 		foreach (var i in charJson.data) {
 			characterDict.Add(i.id, i.character);
 			characterRevDict.Add(i.character, i.id);
@@ -100,11 +106,13 @@ public class CharManager : MonoBehaviour {
 	public Dictionary<int, string> characterDict;
 	public Dictionary<string, int> characterRevDict;
 	public Dictionary<int, CharTreeNode> characterTreeRootDict;
+	public List<int> basicCharIds;
 
-	void Start() {
+	void Init() {
 		characterDict = new Dictionary<int, string>();
 		characterTreeRootDict = new Dictionary<int, CharTreeNode>();
 		characterRevDict = new Dictionary<string, int>();
+		basicCharIds = new List<int>();
 		LoadJson();
 	}
 
@@ -149,12 +157,7 @@ public class CharManager : MonoBehaviour {
 	}
 
 	public string GetRandomCharacter() {
-		var count = characterDict.Values.Count;
-		var random = Random.Range(0, count - 1);
-		int i = 0;
-		foreach (var kv in characterDict) {
-			if (i == random) return kv.Value;
-		}
-		return null;
+		var random = Random.Range(0, basicCharIds.Count - 1);
+		return characterDict[basicCharIds[random]];
 	}
 }
