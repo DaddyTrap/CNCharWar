@@ -40,3 +40,7 @@ sysinfo.txt
 
 # Visual Studio
 .vs/
+
+# Unity Debug Scene
+**/DebugScene.unity
+**/DebugScene.unity.meta
