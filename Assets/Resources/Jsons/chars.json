@@ -1,52 +1,68 @@
 {
-  "data": {
-    "1": {
-      "char": "火"
+  "data": [
+    {
+      "id": 1,
+      "character": "火"
     },
-    "2": {
-      "char": "水"
+    {
+      "id": 2,
+      "character": "水"
     },
-    "3": {
-      "char": "石"
+    {
+      "id": 3,
+      "character": "石"
     },
-    "4": {
-      "char": "木"
+    {
+      "id": 4,
+      "character": "木"
     },
-    "5": {
-      "char": "口"
+    {
+      "id": 5,
+      "character": "口"
     },
-    "6": {
-      "char": "炻"
+    {
+      "id": 6,
+      "character": "炻"
     },
-    "7": {
-      "char": "淡"
+    {
+      "id": 7,
+      "character": "淡"
     },
-    "8": {
-      "char": "炑"
+    {
+      "id": 8,
+      "character": "炑"
     },
-    "9": {
-      "char": "炎"
+    {
+      "id": 9,
+      "character": "炎"
     },
-    "10": {
-      "char": "沯"
+    {
+      "id": 10,
+      "character": "沯"
     },
-    "11": {
-      "char": "呇"
+    {
+      "id": 11,
+      "character": "呇"
     },
-    "12": {
-      "char": "沐"
+    {
+      "id": 12,
+      "character": "沐"
     },
-    "13": {
-      "char": "磊"
+    {
+      "id": 13,
+      "character": "磊"
     },
-    "14": {
-      "char": "杏"
+    {
+      "id": 14,
+      "character": "杏"
     },
-    "15": {
-      "char": "林"
+    {
+      "id": 15,
+      "character": "林"
     },
-    "16": {
-      "char": "回"
+    {
+      "id": 16,
+      "character": "回"
     }
-  }
+  ]
 }
