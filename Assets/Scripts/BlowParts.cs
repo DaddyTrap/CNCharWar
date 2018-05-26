@@ -5,6 +5,8 @@ using UnityEngine;
 public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public int currentPart;//
     public bool canBlow=false;
+
+    public float waitSeconds=3f;
 	// Use this for initialization
 	void Start () {
         currentPart = 0;
@@ -19,6 +21,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
             this.transform.GetChild(currentPart).GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-15, 15), Random.Range(0, 20));//随机发射一个方向
             this.transform.GetChild(currentPart).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);
             this.transform.GetChild(currentPart).GetComponent<Rigidbody2D>().drag = 0.3f;
+            StartCoroutine(FadeOutInDelay(this.transform.GetChild(currentPart).gameObject));
             canBlow = false;
             currentPart++;
         }
@@ -28,6 +31,18 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         }
 
 	}
+    IEnumerator FadeOutInDelay(GameObject toFade)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        //toFade.SetActive(false);
+        toFade.GetComponent<Animator>().SetBool("canFade", true);
+        StartCoroutine(DisableInDelay(toFade));
+    }
+    IEnumerator DisableInDelay(GameObject toDisable)
+    {
+        yield return new WaitForSeconds(1f);
+        toDisable.SetActive(false);
+    }
     public void Blow()
     {
         if(currentPart<this.transform.childCount)//如果此时可以炸飞一个部件
