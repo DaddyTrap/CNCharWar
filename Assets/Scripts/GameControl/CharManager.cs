@@ -31,6 +31,7 @@ public class CharManager : MonoBehaviour {
 	public class CharJsonItem {
 		public int id;
 		public string character;
+		public AttackInfo attackInfo;
 	}
 
 	[System.Serializable]
@@ -78,6 +79,7 @@ public class CharManager : MonoBehaviour {
 		foreach (var i in charJson.data) {
 			characterDict.Add(i.id, i.character);
 			characterRevDict.Add(i.character, i.id);
+			charaterAttackInfoDict.Add(i.id, i.attackInfo);
 		}
 
 		foreach (var i in charTree.data) {
@@ -105,12 +107,14 @@ public class CharManager : MonoBehaviour {
 
 	public Dictionary<int, string> characterDict;
 	public Dictionary<string, int> characterRevDict;
+	public Dictionary<int, AttackInfo> charaterAttackInfoDict;
 	public Dictionary<int, CharTreeNode> characterTreeRootDict;
 	public List<int> basicCharIds;
 
 	void Init() {
 		characterDict = new Dictionary<int, string>();
 		characterTreeRootDict = new Dictionary<int, CharTreeNode>();
+		charaterAttackInfoDict = new Dictionary<int, AttackInfo>();
 		characterRevDict = new Dictionary<string, int>();
 		basicCharIds = new List<int>();
 		LoadJson();
@@ -130,12 +134,11 @@ public class CharManager : MonoBehaviour {
 		return characterDict[id];
 	}
 
-	string SearchTreeByIds(CharTreeNode node, List<int> ids, int index = 0) {
+	int? SearchTreeByIds(CharTreeNode node, List<int> ids, int index = 0) {
 		if (index >= ids.Count) return null;
 		if (index == ids.Count - 1) {
 			// 如果是最后一个id
-			if (node.toId != null) return characterDict[node.toId.Value];
-			else return null;
+			return node.toId;
 		}
 		foreach (var i in node.nextNodes) {
 			if (i.id == ids[index]) {
@@ -153,7 +156,11 @@ public class CharManager : MonoBehaviour {
 		strings.ForEach((str)=>{
 			ids.Add(characterRevDict[str]);
 		});
-		return SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+		var id = SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+		if (id != null)
+			return characterDict[id.Value];
+		else
+			return null;
 	}
 
 	public string GetRandomCharacter() {
