@@ -5,6 +5,12 @@ using UnityEngine;
 public class CharCreature : MonoBehaviour {
 	public CharCreatureInfo basicInfo;
 	public CharCreatureInfo deltaInfo;
+	public int maxSlotSize = 10;
+	public int curSlotSize {
+		get {
+			return Mathf.CeilToInt(curHp / basicInfo.maxHp * maxSlotSize);
+		}
+	}
 	public CharCreatureInfo curInfo {
 		get { return basicInfo + deltaInfo; }
 	}
@@ -64,7 +70,12 @@ public class CharCreature : MonoBehaviour {
 
 	public delegate void OnDeadHandler();
 	public event OnDeadHandler OnDead;
+	public delegate void OnCurSlotSizeChangedHandler(int size);
+	public event OnCurSlotSizeChangedHandler OnCurSlotSizeChanged;
 	public virtual void Damage(float damage) {
+    int lastCurSlotSize = curSlotSize;
+
+    // Deal Damage
 		if (curHp - damage > 0) {
 			curHp -= damage;
 		} else {
@@ -72,7 +83,28 @@ public class CharCreature : MonoBehaviour {
       if (this.OnDead != null)
         this.OnDead();
 		}
+
+		if (curSlotSize != lastCurSlotSize) {
+			if (this.OnCurSlotSizeChanged != null)
+				this.OnCurSlotSizeChanged(curSlotSize);
+		}
 	}
+
+  public virtual void Heal(float heal) {
+    int lastCurSlotSize = curSlotSize;
+
+    // Deal Heal
+		if (curHp + heal <= curInfo.maxHp) {
+			curHp += heal;
+		} else {
+			curHp = curInfo.maxHp;
+		}
+
+		if (curSlotSize != lastCurSlotSize) {
+			if (this.OnCurSlotSizeChanged != null)
+				this.OnCurSlotSizeChanged(curSlotSize);
+		}
+  }
 
 	public void SetIdleAnim() {
 		// TODO: 播放 Idle 动画
