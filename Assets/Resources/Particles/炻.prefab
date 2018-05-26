@@ -10,9 +10,6 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 19800002}
   - component: {fileID: 19900002}
-  - component: {fileID: 114443195582734228}
-  - component: {fileID: 114432682448707624}
-  - component: {fileID: 114037122529553426}
   m_Layer: 0
   m_Name: "\u70BB"
   m_TagString: Untagged
@@ -73,7 +70,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.86602545, y: 0, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 5.57, y: -0.19000006, z: 1.8262241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -81,7 +78,7 @@ Transform:
   - {fileID: 400004}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -120, y: 0, z: 0}
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -263,7 +260,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.7921569, g: 0.3372549, b: 1, a: 0.5019608}
+      maxColor: {r: 0, g: 0, b: 0, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4649,8 +4646,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.43529412, g: 0, b: 1, a: 0.5019608}
-      maxColor: {r: 0.78039217, g: 0.3137255, b: 1, a: 0.5019608}
+      minColor: {r: 0.23940276, g: 0.23487005, b: 0.24528301, a: 0.5019608}
+      maxColor: {r: 0.051320743, g: 0, b: 0.0754717, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9072,8 +9069,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.43529412, g: 0, b: 1, a: 0.5019608}
-      maxColor: {r: 0.78039217, g: 0.3137255, b: 1, a: 0.5019608}
+      minColor: {r: 0.03285239, g: 0, b: 0.0754717, a: 0.5019608}
+      maxColor: {r: 0.05863297, g: 0.0028034912, b: 0.084905684, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -13507,36 +13504,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
---- !u!114 &114037122529553426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b01e65fe8c11964290ba43a3fa6aada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114432682448707624
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b01e65fe8c11964290ba43a3fa6aada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114443195582734228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b01e65fe8c11964290ba43a3fa6aada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
