@@ -18,14 +18,8 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
 
     // Use this for initialization
     void Start () {
-        //player.OnHpChanged +=SyncSlot;//监听玩家的槽的个数变化
-        AddWord("火");
-        AddWord("火");
-        AddWord("火");
-        AddWord("火");
-        AddWord("火");
-        AddWord("火");
-        AddWord("火");
+        player.OnHpChanged +=SyncSlot;//监听玩家的槽的个数变化
+
     }
 	// Update is called once per frame
 	void Update () {
