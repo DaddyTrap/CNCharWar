@@ -19,6 +19,5 @@ public class BottomBanner : MonoBehaviour {
     {
         GameObject newWord = Instantiate(template);
         newWord.name = word;
-
     }
 }
