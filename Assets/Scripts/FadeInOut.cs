@@ -8,7 +8,7 @@ public class FadeInOut : MonoBehaviour {
 
     public static FadeInOut instance;
 
-    private float fadeSpeed = 3.5f;
+    private float fadeSpeed = 7f;
     private bool sceneStarting = true;
     private bool first = true;
     private bool second = false;
@@ -45,6 +45,7 @@ public class FadeInOut : MonoBehaviour {
     }
     public void transition()
     {
+        Debug.Log("yes");
         first = false;
     }
 
@@ -72,6 +73,7 @@ public class FadeInOut : MonoBehaviour {
         }
         else if (first == false)
         {
+            Debug.Log("ok");
             EndScen();
         }
         else if (second == true)
