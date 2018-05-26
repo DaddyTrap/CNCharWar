@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleControl : MonoBehaviour {
-	public BackGroundController bgController;
 	public Player player;
 	public List<Enemy> enemies;
+	public BottomBanner banner;
 
 	[System.Serializable]
 	public class Battle {
@@ -14,15 +14,36 @@ public class BattleControl : MonoBehaviour {
 
 	public Battle[] battles;
 
+	public float bannerInterval = 2.0f;
+	IEnumerator GenerateNewChar() {
+		banner.AddWord(CharManager.instance.GetRandomCharacter());
+		yield return new WaitForSeconds(bannerInterval);
+		StartCoroutine(GenerateNewChar());
+	}
+
 	void Start() {
 		// TODO: 监听选字的事件
+		banner.ConfirmSelectedCharacter += ConfirmSelectHandler;
 
 		// 监听 player 死亡事件
-		player.OnDead += PlayerDeadHandler;
+		if (player != null)
+			player.OnDead += PlayerDeadHandler;
+
+		StartCoroutine(GenerateNewChar());
+	}
+
+	void ConfirmSelectHandler(List<string> chars) {
+		var res = CharManager.instance.SearchCharacterByStrings(chars);
+		if (res == null) {
+			// TODO: 找不到字，惩罚
+		} else {
+			player.Attack(chars);
+		}
 	}
 
 	void OnDestroy() {
-		player.OnDead -= PlayerDeadHandler;
+		if (player != null)
+			player.OnDead -= PlayerDeadHandler;
 	}
 
 	void PlayerDeadHandler() {

@@ -31,6 +31,7 @@ public class CharCreature : MonoBehaviour {
 		buffs = new List<Buff>();
 	}
 
+	// FIXME: 接口需要修改
 	public void Attack(List<string> characters) {
 		// TODO: 具体攻击逻辑
 	}
