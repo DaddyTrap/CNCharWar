@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BottomBanner : MonoBehaviour {
+public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个字；把选好的字体传给；拖拽完成后删除
     public GameObject template;//字的模板
     public List<GameObject> BottomString;
     public int maximum;//列表中最多可以有多少项
@@ -16,10 +16,14 @@ public class BottomBanner : MonoBehaviour {
     public float deltaTime;
     public List<GameObject> selectedString;
     public List<string> executeWord;
+    public delegate void ConfirmSelectedCharacterHandler(List<string> characters);
+
+    public event ConfirmSelectedCharacterHandler ConfirmSelectedCharacter;
+
     // Use this for initialization
     void Start () {
-        //test();
-        StartCoroutine(GenerateWord());
+        test();
+       // StartCoroutine(GenerateWord());
 	}
 	IEnumerator GenerateWord()//每隔一段时间新增一次字
     {
@@ -92,5 +96,9 @@ public class BottomBanner : MonoBehaviour {
         }
         selectedString.Clear();
         //Player
+        if (this.ConfirmSelectedCharacter != null)
+        {
+            this.ConfirmSelectedCharacter(executeWord);
+        }
     }
 }
