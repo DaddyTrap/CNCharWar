@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//update更新bufftime
+
 public class CharCreature : MonoBehaviour {
 	public CharCreatureInfo basicInfo;
 	public CharCreatureInfo deltaInfo;
@@ -18,7 +20,7 @@ public class CharCreature : MonoBehaviour {
 
 	public class Buff {
 		public BuffInfo buff;
-		public float pastTime;
+		public float pastTime;//过去的时间
 		public Buff(BuffInfo buff) {
 			this.buff = buff;
 			pastTime = 0f;
@@ -32,11 +34,33 @@ public class CharCreature : MonoBehaviour {
 	}
 
 	// FIXME: 接口需要修改
-	public void Attack(List<string> characters) {
+	public virtual void Attack(List<string> characters) {
 		// TODO: 具体攻击逻辑
-	}
+        for(int i = 0; i < buffs.Count; ++i)//计算buff的最终值
+        {
 
-	public delegate void OnAttackedHandler(AttackInfo attackInfo);
+        }
+
+
+	}
+    void Update()//
+    {
+        foreach(var i in buffs)
+        {
+            i.pastTime += Time.deltaTime;
+        }
+        for(int i = buffs.Count-1; i >=0; --i)
+        {
+            if (buffs[i].pastTime >= buffs[i].buff.time)
+            {
+                buffs.RemoveAt(i);//删除该buff
+            }
+        }
+    }
+
+
+
+    public delegate void OnAttackedHandler(AttackInfo attackInfo);
 	public event OnAttackedHandler OnAttacked;
 
 	protected void AddBuff(BuffInfo info) {

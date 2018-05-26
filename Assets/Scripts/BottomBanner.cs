@@ -76,7 +76,9 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
         for(int i = 0; i < selectedString.Count; ++i)
         {
             executeWord.Add(selectedString[i].name);
+            BottomString.Remove(selectedString[i].gameObject);
             Destroy(selectedString[i].gameObject);
+            
         }
         selectedString.Clear();
         //Player
