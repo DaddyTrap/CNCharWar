@@ -39,24 +39,7 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
             GameObject newWord =Instantiate(template,template.transform.parent);
             newWord.name = word;
             newWord.SetActive(true);
-            switch (word)
-            {
-                case "火":
-                    newWord.transform.GetChild(0).GetComponent<Image>().sprite = 火;
-                    break;
-                case "水":
-                    newWord.transform.GetChild(0).GetComponent<Image>().sprite = 水;
-                    break;
-                case "木":
-                    newWord.transform.GetChild(0).GetComponent<Image>().sprite = 木;
-                    break;
-                case "口":
-                    newWord.transform.GetChild(0).GetComponent<Image>().sprite = 口;
-                    break;
-                case "石":
-                    newWord.transform.GetChild(0).GetComponent<Image>().sprite = 石;
-                    break;
-            }
+            newWord.transform.GetChild(0).GetComponent<Image>().sprite = CharImgManager.instance.imgDict[word];
 
             BottomString.Add(newWord);//列表里添加该元素
         }
