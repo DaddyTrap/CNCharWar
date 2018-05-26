@@ -31,8 +31,11 @@ public class CharCreature : MonoBehaviour {
 		buffs = new List<Buff>();
 	}
 
-	public void Attack(List<string> characters) {
+	public virtual void Attack(List<string> characters) {
 		// TODO: 具体攻击逻辑
+
+
+
 	}
 
 	public delegate void OnAttackedHandler(AttackInfo attackInfo);
