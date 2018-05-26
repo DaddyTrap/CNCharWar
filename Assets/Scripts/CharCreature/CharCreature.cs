@@ -42,8 +42,13 @@ public class CharCreature : MonoBehaviour {
 		if (attackInfo.buff != null) {
 			AddBuff(attackInfo.buff);
 		}
+		// 如果有治疗，则治疗
+		if (attackInfo.heal != null) {
+			Heal(attackInfo.heal);
+		}
 		// 触发Attack事件
 		var damage = attackInfo.damage * this.curInfo.atk;
+		Debug.Log(gameObject.name + " 发动攻击");
 		if (this.OnAttack != null) {
 			this.OnAttack(attackInfo, damage);
 		}
@@ -131,8 +136,9 @@ public class CharCreature : MonoBehaviour {
     int lastCurSlotSize = curSlotSize;
 
     // Deal Heal
-		if (curHp + heal <= curInfo.maxHp) {
-			curHp += heal;
+		var maxHp = curInfo.maxHp;
+		if (curHp + maxHp * heal <= curInfo.maxHp) {
+			curHp += maxHp * heal;
 		} else {
 			curHp = curInfo.maxHp;
 		}
