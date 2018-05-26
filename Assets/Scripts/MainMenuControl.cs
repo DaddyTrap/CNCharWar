@@ -8,88 +8,59 @@ public class MainMenuControl : MonoBehaviour
 {
 
     public Camera MainMenuCamera;
-    public GameObject MainPanel;
+    public Image LevelIamge;
+    public GameObject LevelPanel;
+    public Image MenuIamge;
     public GameObject MenuPanel;
-    public GameObject CornerPanel;
-    // public string firstScene = "scene_3-1";
+    public GameObject tujian;
 
-    //GameManager manager;
-
-    public void ChangeBGMVolume(float a)
+    public void Start()
     {
-        //GameManager.instance.musicManager.ChangeBGMVolume(a);
-    }
-
-    public void ChangeSEVolume(float a)
-    {
-        //GameManager.instance.musicManager.ChangeSEVolume(a);
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        //manager = GameManager.instance;
-        //manager.musicManager.PlayBGM("title");
-
-        // Add items to inventory
-        StartCoroutine(AddItems());
-    }
-
-    IEnumerator AddItems()
-    {
-        yield return new WaitForSeconds(1f);
-        //manager.inventoryManager.AddItem(manager.jsonManager.itemDict["SimpleSword"]);
-        //manager.inventoryManager.AddItem(manager.jsonManager.itemDict["Excalibur"]);
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void StartGame()
-    {
-        //manager.lastVDoorName = manager.saveDataManager.saveData.lastVDoorName;
-        //Debug.Log(manager.lastVDoorName);
-        //manager.SwitchScene(GameManager.instance.saveDataManager.saveData.lastSceneName);
-    }
-
-    public void start()
-    {
-        MainPanel.SetActive(false);
+        FadeInOut.instance.transition();
+        LevelPanel.SetActive(false);
         MenuPanel.SetActive(true);
-        CornerPanel.SetActive(true);
+        tujian.SetActive(false);
+        LevelIamge.gameObject.SetActive(false);
+        MenuIamge.gameObject.SetActive(true);
+    }
+
+    public void firstLevel()
+    {
+        FadeInOut.instance.transition();
+        SceneManager.LoadScene("BattleScene");
+    }
+
+    public void secondLevel()
+    {
+        FadeInOut.instance.transition();
+        SceneManager.LoadScene("BattleScene");
+    }
+
+    public void back()
+    {
+        FadeInOut.instance.transition();
+        MenuPanel.SetActive(true);
+        LevelPanel.SetActive(false);
+        LevelIamge.gameObject.SetActive(false);
+        MenuIamge.gameObject.SetActive(true);
+    }
+
+    public void openTujian()
+    {
+        tujian.SetActive(true);
+        LevelPanel.SetActive(false);
+        MenuPanel.SetActive(true);
         FadeInOut.instance.transition();
     }
 
-    public void corner()
+    public void openLevel()
     {
-        MainPanel.SetActive(false);
-        CornerPanel.SetActive(true);
         MenuPanel.SetActive(false);
+        MenuIamge.gameObject.SetActive(false);
+        LevelPanel.SetActive(true);
+        LevelIamge.gameObject.SetActive(true);
+        FadeInOut.instance.transition();
     }
-
-    public void ExitCorner()
-    {
-        MainPanel.SetActive(true);
-        CornerPanel.SetActive(false);
-        MenuPanel.SetActive(false);
-    }
-
-    public void Menu()
-    {
-        MainPanel.SetActive(false);
-        MenuPanel.SetActive(true);
-        CornerPanel.SetActive(false);
-    }
-
-    public void ExitMenu()
-    {
-        MainPanel.SetActive(true);
-        CornerPanel.SetActive(false);
-        MenuPanel.SetActive(false);
-    }
-
     public void Exit()
     {
 #if UNITY_EDITOR

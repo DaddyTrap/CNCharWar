@@ -13,7 +13,9 @@ public class CharCreature : MonoBehaviour {
 			return Mathf.CeilToInt(curHp / basicInfo.maxHp * maxSlotSize);
 		}
 	}
-	public CharCreatureInfo curInfo {
+    public DictionaryManager dictionaryManager;
+
+    public CharCreatureInfo curInfo {
 		get { return basicInfo + deltaInfo; }
 	}
 	public float curHp = 1000;
@@ -33,24 +35,31 @@ public class CharCreature : MonoBehaviour {
 		buffs = new List<Buff>();
 	}
 
+	public delegate void OnAttackHandler(AttackInfo attackInfo, float damage);
+	public event OnAttackHandler OnAttack;
 	public virtual void Attack(AttackInfo attackInfo) {
-		// TODO: 具体攻击逻辑
-		for(int i = 0; i < buffs.Count; ++i) {
-
+		// 如果有buff，则增加buff
+		if (attackInfo.buff != null) {
+			AddBuff(attackInfo.buff);
 		}
+		// 触发Attack事件
+		var damage = attackInfo.damage * this.curInfo.atk;
+		if (this.OnAttack != null) {
+			this.OnAttack(attackInfo, damage);
+		}
+        dictionaryManager.NewFoundCharacter("string");//!!!!!!Todo:此处将传入技能字
 	}
 	void Update() {
-			foreach(var i in buffs)
-			{
-					i.pastTime += Time.deltaTime;
+		var newDeltaInfo = new CharCreatureInfo(0, 0, 0);
+		for(int i = buffs.Count - 1; i >= 0; --i) {
+			buffs[i].pastTime += Time.deltaTime;
+			if (buffs[i].pastTime >= buffs[i].buff.time) {
+					buffs.RemoveAt(i); //删除该buff
+			} else {
+				newDeltaInfo += buffs[i].buff.charCreatureInfo;
 			}
-			for(int i = buffs.Count-1; i >=0; --i)
-			{
-					if (buffs[i].pastTime >= buffs[i].buff.time)
-					{
-							buffs.RemoveAt(i);//删除该buff
-					}
-			}
+		}
+		deltaInfo = newDeltaInfo;
 	}
 
 
