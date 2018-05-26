@@ -1213,7 +1213,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1544160666222972, guid: 4fea76ed2199d2b41a3e7378fa4fec64, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4356484925749022, guid: 4fea76ed2199d2b41a3e7378fa4fec64, type: 2}
       propertyPath: m_LocalRotation.x
