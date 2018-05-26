@@ -42,6 +42,7 @@ public class CharCreature : MonoBehaviour {
 		bool found = false;
 		foreach (var i in buffs) {
 			// 检查是否是相同的 buff
+      // FIXME: ????
 			if (i.buff.charCreatureInfo == info.charCreatureInfo) {
 				// 如果是相同 buff ，则重置 buff 时间
 				i.pastTime = 0f;
