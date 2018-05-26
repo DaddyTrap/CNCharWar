@@ -134,12 +134,11 @@ public class CharManager : MonoBehaviour {
 		return characterDict[id];
 	}
 
-	string SearchTreeByIds(CharTreeNode node, List<int> ids, int index = 0) {
+	int? SearchTreeByIds(CharTreeNode node, List<int> ids, int index = 0) {
 		if (index >= ids.Count) return null;
 		if (index == ids.Count - 1) {
 			// 如果是最后一个id
-			if (node.toId != null) return characterDict[node.toId.Value];
-			else return null;
+			return node.toId;
 		}
 		foreach (var i in node.nextNodes) {
 			if (i.id == ids[index]) {
@@ -157,7 +156,11 @@ public class CharManager : MonoBehaviour {
 		strings.ForEach((str)=>{
 			ids.Add(characterRevDict[str]);
 		});
-		return SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+		var id = SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+		if (id != null)
+			return characterDict[id.Value];
+		else
+			return null;
 	}
 
 	public string GetRandomCharacter() {
