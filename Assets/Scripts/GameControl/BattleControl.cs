@@ -16,6 +16,7 @@ public class BattleControl : MonoBehaviour {
 
 	public BGControl bgControl;
 	public GameObject camera;
+	public CombineEffect combineEffect;
 
 	public bool battling = false;
 
@@ -118,8 +119,16 @@ public class BattleControl : MonoBehaviour {
 			}
 		}
 
+		// 测试效果
 		if (Input.GetKeyDown(KeyCode.N)) {
-			NextBattle();
+			combineEffect.MakeEffect(new List<string>{"水", "石"}, "水", ()=>{
+				Debug.Log("2 Callback");
+			});
+		}
+		if (Input.GetKeyDown(KeyCode.M)) {
+			combineEffect.MakeEffect(new List<string>{"水", "火", "火"}, "石", ()=>{
+				Debug.Log("3 Callback");
+			});
 		}
 	}
 

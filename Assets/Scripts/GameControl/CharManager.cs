@@ -79,6 +79,8 @@ public class CharManager : MonoBehaviour {
 		foreach (var i in charJson.data) {
 			characterDict.Add(i.id, i.character);
 			characterRevDict.Add(i.character, i.id);
+			// !!! 必须手动给到 charId
+			i.attackInfo.charId = i.id;
 			charaterAttackInfoDict.Add(i.id, i.attackInfo);
 		}
 
@@ -109,6 +111,7 @@ public class CharManager : MonoBehaviour {
 	public Dictionary<string, int> characterRevDict;
 	public Dictionary<int, AttackInfo> charaterAttackInfoDict;
 	public Dictionary<int, CharTreeNode> characterTreeRootDict;
+	public Dictionary<int, List<string>> idToStringsDict;
 	List<int> basicCharIds;
 
 	void Init() {
@@ -116,11 +119,13 @@ public class CharManager : MonoBehaviour {
 		characterTreeRootDict = new Dictionary<int, CharTreeNode>();
 		charaterAttackInfoDict = new Dictionary<int, AttackInfo>();
 		characterRevDict = new Dictionary<string, int>();
+		idToStringsDict = new Dictionary<int, List<string>>();
 		basicCharIds = new List<int>();
 		LoadJson();
-		#if UNITY_EDITOR
+		// #if UNITY_EDITOR
+		// Traverse to get
 		Traverse();
-		#endif
+		// #endif
 	}
 
 	public int? GetIdByCharacter(string character) {
@@ -186,7 +191,7 @@ public class CharManager : MonoBehaviour {
 		return characterDict[basicCharIds[random]];
 	}
 
-	#if UNITY_EDITOR
+	// #if UNITY_EDITOR
 	public void Traverse() {
 		foreach (var kv in characterTreeRootDict) {
 			List<string> strs = new List<string>();
@@ -203,11 +208,12 @@ public class CharManager : MonoBehaviour {
 			});
 			str += " -> " + characterDict[root.toId.Value];
 			Debug.Log(str);
+			idToStringsDict[root.toId.Value] = strs;
 		}
 		foreach (var i in root.nextNodes) {
 			List<string> ss = new List<string>(strs);
 			_Traverse(i, ss);
 		}
 	}
-	#endif
+	// #endif
 }
