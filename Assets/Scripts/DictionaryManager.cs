@@ -57,7 +57,7 @@ public class DictionaryManager : MonoBehaviour {
 
 
         var Explains = Resources.Load("Jsons/Explanation") as TextAsset;
-        Debug.Log(Explains.text);
+        //Debug.Log(Explains.text);
         var ExplainJson = JsonUtility.FromJson(Explains.text, typeof(ExplanationJson)) as ExplanationJson;
 
 
@@ -122,6 +122,7 @@ public class DictionaryManager : MonoBehaviour {
     {
         foreach(var i in isFound)
         {
+            
            // Debug.Log("1");
             if (i.Value == false) continue;//不执行显示
             Debug.Log("2");
@@ -129,7 +130,8 @@ public class DictionaryManager : MonoBehaviour {
             temp.transform.SetParent(template.transform.parent);
             temp.name = i.Key;
             temp.SetActive(true);
-            // temp.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite =;//图片赋值
+            temp.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = 
+                CharImgManager.instance.imgDict[i.Key];//图片赋值
             temp.transform.GetChild(1).GetComponent<Text>().text = theBook[i.Key];
 
         }
