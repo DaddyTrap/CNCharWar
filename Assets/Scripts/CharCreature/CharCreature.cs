@@ -105,6 +105,9 @@ public class CharCreature : MonoBehaviour {
 	public event OnDeadHandler OnDead;
 	public delegate void OnCurSlotSizeChangedHandler(int size);
 	public event OnCurSlotSizeChangedHandler OnCurSlotSizeChanged;
+    public delegate void OnHPChangedHandler(float HPPercentage);//ZYQ HP改变时发射
+    public event OnHPChangedHandler OnHpChanged;
+
 	public virtual void Damage(float damage) {
     int lastCurSlotSize = curSlotSize;
 
@@ -116,8 +119,9 @@ public class CharCreature : MonoBehaviour {
       if (this.OnDead != null)
         this.OnDead();
 		}
-
-		if (curSlotSize != lastCurSlotSize) {//!!!
+        if (this.OnHpChanged != null)
+            this.OnHpChanged(curHp / curInfo.maxHp);//发射此时HP占比
+        if (curSlotSize != lastCurSlotSize) {//!!!
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
 		}
@@ -132,8 +136,9 @@ public class CharCreature : MonoBehaviour {
 		} else {
 			curHp = curInfo.maxHp;
 		}
-
-		if (curSlotSize != lastCurSlotSize) {
+        if (this.OnHpChanged != null)
+            this.OnHpChanged(curHp/curInfo.maxHp);
+        if (curSlotSize != lastCurSlotSize) {
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
 		}

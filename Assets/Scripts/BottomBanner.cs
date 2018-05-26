@@ -7,27 +7,37 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
     public GameObject template;//字的模板
     public List<GameObject> BottomString;
     public int maximum;//列表中最多可以有多少项
-
-    public Sprite 火;
-    public Sprite 水;
-    public Sprite 木;
-    public Sprite 石;
-    public Sprite 口;
     public float deltaTime;
     public List<GameObject> selectedString;
     public List<string> executeWord;
-    public delegate void ConfirmSelectedCharacterHandler(List<string> characters);
+    public Player player;
+    public Image Cover;//覆盖在BottomBanner上的东西（Stretch）
 
+    public delegate void ConfirmSelectedCharacterHandler(List<string> characters);
     public event ConfirmSelectedCharacterHandler ConfirmSelectedCharacter;
 
     // Use this for initialization
     void Start () {
-
-	}
+        //player.OnHpChanged +=SyncSlot;//监听玩家的槽的个数变化
+        AddWord("火");
+        AddWord("火");
+        AddWord("火");
+        AddWord("火");
+        AddWord("火");
+        AddWord("火");
+        AddWord("火");
+    }
 	// Update is called once per frame
 	void Update () {
 
-	}
+    }
+    public void SyncSlot(float HPPercentage)
+    {
+        //Cover.rectTransform.rect.xMin = HPPercentage * 1400;
+        Cover.rectTransform.offsetMin=new Vector2(HPPercentage * 1400+258, -500);//同步Hp条长度
+
+    }
+
     public void AddWord(string word)//输入一个字，增加这个字体的
     {
 
