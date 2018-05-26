@@ -107,11 +107,20 @@ public class CharCreature : MonoBehaviour {
 		}
   }
 
-	public void SetIdleAnim() {
+	public virtual void SetIdleAnim() {
 		// TODO: 播放 Idle 动画
 	}
 
-	public void SetMoveAnim() {
+	public virtual void SetMoveAnim() {
 		// TODO: 播放 Move 动画
 	}
+
+    public virtual void SetStop() {
+        // TODO: 人物暂停不动
+    }
+
+    public virtual void ShowSkill()
+    {
+        // TODO: 人物发出技能
+    }
 }

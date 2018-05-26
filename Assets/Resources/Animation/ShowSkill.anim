@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "\u6280\u80FD\u6253\u51FA"
+  m_Name: ShowSkill
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
