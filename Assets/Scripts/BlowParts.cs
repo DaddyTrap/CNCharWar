@@ -5,15 +5,19 @@ using UnityEngine;
 public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public int currentPart;//
     public bool canBlow=false;
-
+    public bool goShake = false;
+    public bool goExplode = false;
     public float waitSeconds=3f;
+    public ParticleSystem Explosion;//爆炸的粒子效果
 	// Use this for initialization
 	void Start () {
+        this.GetComponent<Enemy>().OnCurSlotSizeChanged += ThinkBlow;//订阅
+        this.GetComponent<Enemy>().OnDead += Explode;//订阅死亡事件
         currentPart = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (canBlow == true)
         {
             this.transform.GetChild(currentPart).gameObject.AddComponent<Rigidbody2D>();//给该部件添加RigidBody2D
@@ -25,12 +29,33 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
             canBlow = false;
             currentPart++;
         }
+        if (goExplode == true)
+        {
+            goExplode = false;
+            StartCoroutine(ExplodeInDelay());
+        }
+        if (goShake == true)
+        {
+            //StartCoroutine();
+            this.transform.GetChild(currentPart).gameObject.GetComponent<Animator>().SetBool("isStop", true);
+            this.transform.position += new Vector3(Random.Range(-0.02f, 0.02f), Random.Range(-0.02f, 0.02f), 0);
+        }
         if (Input.GetButtonDown("Fire1"))//测试用！
         {
             Blow();
         }
 
 	}
+    IEnumerator ExplodeInDelay()
+    {
+        yield return new WaitForSeconds(1f);//抖完
+        var tempPC = Instantiate(Explosion);
+        tempPC.transform.position = this.transform.position;//移动到该位置
+        this.gameObject.SetActive(false);
+        tempPC.Play();//播放爆炸动画
+        Debug.Log("Exploded");
+    }
+
     IEnumerator FadeOutInDelay(GameObject toFade)
     {
         yield return new WaitForSeconds(waitSeconds);
@@ -43,9 +68,35 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         yield return new WaitForSeconds(1f);
         toDisable.SetActive(false);
     }
+    public void ThinkBlow(int size)//size 是剩下的血量//!!!未测试
+    {
+        int countRemain=0;
+        for(int i = 0; i < this.transform.childCount; ++i)
+        {
+            if (this.transform.GetChild(i).gameObject.activeInHierarchy == false)
+            {
+                countRemain++;
+            }
+        }
+        for(int i = size; i < countRemain; ++i)
+        {
+            Blow();
+        }
+    }
     public void Blow()
     {
-        if(currentPart<this.transform.childCount)//如果此时可以炸飞一个部件
+        if(currentPart<this.transform.childCount-1)//如果此时可以炸飞一个部件!!最后一个部件要用Explode来处理
             canBlow = true;
+        else
+        {
+            this.GetComponent<Enemy>().OnCurSlotSizeChanged -= ThinkBlow;
+        }
+    }
+
+    public void Explode()
+    {
+        goShake = true;
+        goExplode = true;
+        this.GetComponent<Enemy>().OnDead -= Explode;
     }
 }

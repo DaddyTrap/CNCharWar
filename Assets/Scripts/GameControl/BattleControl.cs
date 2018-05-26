@@ -37,8 +37,9 @@ public class BattleControl : MonoBehaviour {
 		NextBattle();
 		StartCoroutine(GenerateNewChar());
 	}
-
-	void ConfirmSelectHandler(List<string> chars) {
+    public delegate void OnCharacterFindHandler(string character);
+    public event OnCharacterFindHandler OnCharacterFind;//发布消息
+    void ConfirmSelectHandler(List<string> chars) {
 		var instance = CharManager.instance;
 		var res = instance.SearchAttackByStrings(chars);
 		if (res == null) {
@@ -53,7 +54,8 @@ public class BattleControl : MonoBehaviour {
 			Debug.Log("找到合成字，攻击");
 			if (player != null)
 				player.Attack(res);
-		}
+            OnCharacterFind(instance.SearchAttackCharacterByStrings(chars));//发送发现新字消息给DictionaryController;ZYQ添加
+        }
 	}
 
 	void OnDestroy() {

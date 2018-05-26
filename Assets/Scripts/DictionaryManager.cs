@@ -8,6 +8,8 @@ public class DictionaryManager : MonoBehaviour {
     public Dictionary<string, string> theBook;
     public GameObject template;
 
+    public BattleControl battleControl;
+
     #region Singleton
     private static DictionaryManager instance_;
 
@@ -100,16 +102,11 @@ public class DictionaryManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        /*foreach(var i in isFound)
-        {
-            NewFoundCharacter(i.Key);
-        }*/
+        battleControl.OnCharacterFind += NewFoundCharacter;//不打算写结束监听
         NewFoundCharacter("沯");
         NewFoundCharacter("呇");
         NewFoundCharacter("炎");
-        NewFoundCharacter("炑");
-        NewFoundCharacter("磊");
-        NewFoundCharacter("杏");
+
 
         GenerateDictionaryForm();
     }
