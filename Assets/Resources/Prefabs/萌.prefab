@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4894546517606730}
+  - component: {fileID: 114655608654241706}
+  - component: {fileID: 114074675794660080}
   m_Layer: 0
   m_Name: "\u840C"
   m_TagString: Untagged
@@ -235,6 +237,62 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114074675794660080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907080832028216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8917dbaf914434bace94a18bc9a364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPart: 0
+  canBlow: 0
+  goShake: 0
+  goExplode: 0
+  waitSeconds: 3
+  Explosion: {fileID: 100000, guid: 18204b98237ccb540808f2cd2d78c2c8, type: 2}
+--- !u!114 &114655608654241706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907080832028216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 240
+    atk: 56
+    def: 40
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 4
+  curHp: 240
+  startTime: 0
+  attackInterval: 5
+  attackSequence:
+  - charId: 0
+    damage: 0
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
 --- !u!212 &212108204502458640
 SpriteRenderer:
   m_ObjectHideFlags: 1

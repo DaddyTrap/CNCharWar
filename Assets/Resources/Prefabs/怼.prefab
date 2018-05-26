@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4805205418163244}
+  - component: {fileID: 114481594291810972}
   m_Layer: 0
   m_Name: "\u603C"
   m_TagString: Untagged
@@ -235,6 +236,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114481594291810972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598098689421490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 320
+    atk: 56
+    def: 40
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 4
+  curHp: 320
+  startTime: 0
+  attackInterval: 5
+  attackSequence:
+  - charId: 0
+    damage: 0
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
 --- !u!212 &212103978158155984
 SpriteRenderer:
   m_ObjectHideFlags: 1

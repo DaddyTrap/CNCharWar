@@ -8,7 +8,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public bool goShake = false;
     public bool goExplode = false;
     public float waitSeconds=3f;
-    public ParticleSystem Explosion;//爆炸的粒子效果
+    public GameObject Explosion;//爆炸的粒子效果
 	// Use this for initialization
 	void Start () {
         this.GetComponent<Enemy>().OnCurSlotSizeChanged += ThinkBlow;//订阅
@@ -52,7 +52,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         var tempPC = Instantiate(Explosion);
         tempPC.transform.position = this.transform.position;//移动到该位置
         this.gameObject.SetActive(false);
-        tempPC.Play();//播放爆炸动画
+        tempPC.GetComponent<ParticleSystem>().Play();//播放爆炸动画
         Debug.Log("Exploded");
     }
 
