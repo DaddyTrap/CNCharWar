@@ -22,7 +22,7 @@ public class BattleControl : MonoBehaviour {
 	}
 
 	void Start() {
-		// TODO: 监听选字的事件
+		// 监听选字的事件
 		banner.ConfirmSelectedCharacter += ConfirmSelectHandler;
 
 		// 监听 player 死亡事件
@@ -33,11 +33,20 @@ public class BattleControl : MonoBehaviour {
 	}
 
 	void ConfirmSelectHandler(List<string> chars) {
-		var res = CharManager.instance.SearchCharacterByStrings(chars);
+		var instance = CharManager.instance;
+		var res = instance.SearchAttackByStrings(chars);
 		if (res == null) {
-			// TODO: 找不到字，惩罚
+			Debug.Log("找不到合成字，单个打出");
+			foreach (var i in chars) {
+				if (player != null) {
+					var id = instance.characterRevDict[i];
+					player.Attack(instance.charaterAttackInfoDict[id]);
+				}
+			}
 		} else {
-			player.Attack(chars);
+			Debug.Log("找到合成字，攻击");
+			if (player != null)
+				player.Attack(res);
 		}
 	}
 
@@ -48,6 +57,7 @@ public class BattleControl : MonoBehaviour {
 
 	void PlayerDeadHandler() {
 		// TODO: 处理玩家死亡事件: 游戏结束
+		Debug.Log("玩家死亡，结束战斗");
 	}
 
 	int currentBattleIndex = -1;
@@ -56,12 +66,17 @@ public class BattleControl : MonoBehaviour {
 		// 如果还有下一个战斗
 		if (currentBattleIndex < battles.Length) {
 			LoadBattle(battles[currentBattleIndex]);
+			// TODO: 滚动背景图
 		}
 	}
 
 	void LoadBattle(Battle battle) {
-		// TODO: 生成敌人
-		// TODO: 监听敌人死亡事件
+		// 生成敌人
+		// 监听敌人死亡事件
+		foreach (var i in battle.battleEnemies) {
+			i.gameObject.SetActive(true);
+			i.OnDead += EnemeyDeadHandler;
+		}
 	}
 
 	int deadEnenmy = 0;
@@ -75,6 +90,7 @@ public class BattleControl : MonoBehaviour {
 
 	void HandleWin() {
 		// TODO: 显示胜利提示等
+		Debug.Log("本场Battle胜利");
 		NextBattle();
 	}
 }

@@ -109,7 +109,7 @@ public class CharManager : MonoBehaviour {
 	public Dictionary<string, int> characterRevDict;
 	public Dictionary<int, AttackInfo> charaterAttackInfoDict;
 	public Dictionary<int, CharTreeNode> characterTreeRootDict;
-	public List<int> basicCharIds;
+	List<int> basicCharIds;
 
 	void Init() {
 		characterDict = new Dictionary<int, string>();
@@ -118,6 +118,9 @@ public class CharManager : MonoBehaviour {
 		characterRevDict = new Dictionary<string, int>();
 		basicCharIds = new List<int>();
 		LoadJson();
+		#if UNITY_EDITOR
+		Traverse();
+		#endif
 	}
 
 	public int? GetIdByCharacter(string character) {
@@ -141,21 +144,25 @@ public class CharManager : MonoBehaviour {
 			return node.toId;
 		}
 		foreach (var i in node.nextNodes) {
-			if (i.id == ids[index]) {
+			if (i.id == ids[index + 1]) {
 				var res = SearchTreeByIds(i, ids, index + 1);
-				if (res == null) continue;
-				else return res;
+				return res;
 			}
 		}
 		return null;
 	}
 
-	public string SearchCharacterByStrings(List<string> strings) {
-		if (strings.Count <= 0) return null;
+	List<int> CharStringsToIds(List<string> strs) {
 		List<int> ids = new List<int>();
-		strings.ForEach((str)=>{
+		strs.ForEach((str)=>{
 			ids.Add(characterRevDict[str]);
 		});
+		return ids;
+	}
+
+	public string SearchCharacterByStrings(List<string> strings) {
+		if (strings.Count <= 0) return null;
+		var ids = CharStringsToIds(strings);
 		var id = SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
 		if (id != null)
 			return characterDict[id.Value];
@@ -163,8 +170,44 @@ public class CharManager : MonoBehaviour {
 			return null;
 	}
 
+	public AttackInfo SearchAttackByStrings(List<string> strings) {
+		if (strings.Count <= 0) return null;
+		var ids = CharStringsToIds(strings);
+		var id = SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+		if (id != null) {
+			return charaterAttackInfoDict[id.Value];
+		} else {
+			return null;
+		}
+	}
+
 	public string GetRandomCharacter() {
 		var random = Random.Range(0, basicCharIds.Count - 1);
 		return characterDict[basicCharIds[random]];
 	}
+
+	#if UNITY_EDITOR
+	public void Traverse() {
+		foreach (var kv in characterTreeRootDict) {
+			List<string> strs = new List<string>();
+			_Traverse(kv.Value, strs);
+		}
+	}
+
+	void _Traverse(CharTreeNode root, List<string> strs) {
+		strs.Add(characterDict[root.id]);
+		if (root.toId != null) {
+			string str = "";
+			strs.ForEach((s)=>{
+				str += s;
+			});
+			str += " -> " + characterDict[root.toId.Value];
+			Debug.Log(str);
+		}
+		foreach (var i in root.nextNodes) {
+			List<string> ss = new List<string>(strs);
+			_Traverse(i, ss);
+		}
+	}
+	#endif
 }
