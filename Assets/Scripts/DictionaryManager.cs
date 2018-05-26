@@ -135,6 +135,7 @@ public class DictionaryManager : MonoBehaviour {
     }
     public void BackUp()
     {
+        FadeInOut.instance.transition();
         this.gameObject.SetActive(false);
     }
     public void ShowUp()
