@@ -22,7 +22,7 @@ public class BattleControl : MonoBehaviour {
 	}
 
 	void Start() {
-		// TODO: 监听选字的事件
+		// 监听选字的事件
 		banner.ConfirmSelectedCharacter += ConfirmSelectHandler;
 
 		// 监听 player 死亡事件
@@ -33,11 +33,20 @@ public class BattleControl : MonoBehaviour {
 	}
 
 	void ConfirmSelectHandler(List<string> chars) {
-		var res = CharManager.instance.SearchCharacterByStrings(chars);
+		var instance = CharManager.instance;
+		var res = instance.SearchAttackByStrings(chars);
 		if (res == null) {
-			// TODO: 找不到字，惩罚
+			Debug.Log("找不到合成字，单个打出");
+			foreach (var i in chars) {
+				if (player != null) {
+					var id = instance.characterRevDict[i];
+					player.Attack(instance.charaterAttackInfoDict[id]);
+				}
+			}
 		} else {
-			player.Attack(chars);
+			Debug.Log("找到合成字，攻击");
+			if (player != null)
+				player.Attack(res);
 		}
 	}
 
