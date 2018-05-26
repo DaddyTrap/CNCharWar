@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterClicked : MonoBehaviour {
+public class CharacterClicked : MonoBehaviour {//绑在点击的MASK上，这一部分可以处理各种颜色的更改
     public GameObject BottomBanner;
     public bool selected=false;
 	// Use this for initialization
@@ -20,7 +20,7 @@ public class CharacterClicked : MonoBehaviour {
         {
             BottomBanner.GetComponent<BottomBanner>().SelectCharacter(this.transform.parent.gameObject);//传入父亲的名字
             GetComponent<UnityEngine.UI.Image>().color = new Color32(156, 156, 156, 100);
-            Debug.Log("Y");
+            //Debug.Log("Y");
             selected = true;
         }else
         {

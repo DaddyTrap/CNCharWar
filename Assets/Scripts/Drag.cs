@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 //给空间添加监听事件要实现的一些接口
 public class Drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler,
-    IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+    IEndDragHandler//, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject BottomBanner;//控制器——BottomBanner
    // public GameObject tempContainer;//临时容器
@@ -93,6 +93,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
     public void OnPointerEnter(PointerEventData eventData)
     {
         imgRect.localScale = imgReduceScale;   //缩小图片
+        Debug.Log("Shorten");
     }
 
     //当鼠标退出图片时调用   对应接口   IPointerExitHandler

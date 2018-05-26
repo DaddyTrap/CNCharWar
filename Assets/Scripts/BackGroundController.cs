@@ -8,7 +8,7 @@ public class BackGroundController : MonoBehaviour {
     public bool isMoving=true;//标志是否正在滚动
     public float scrollSpeed;//滚动速度
     public Image currentBackGround;
-    public GameObject Canvas;
+    public Canvas canvas;
 
     public List<float> stopTime;//场景停下的时间
     public int stopTimeID;
@@ -27,7 +27,7 @@ public class BackGroundController : MonoBehaviour {
                                                                                                                                            //nextBackGround.transform.position = currentBackGround.transform.position + new Vector3(-scrollSpeed * Time.deltaTime, 0, 0);
 
 
-            if (stopTime[stopTimeID] - RunningTime(-currentBackGround.transform.position.x + Canvas.transform.position.x) < 0.5f)//表明是需要暂停的情况
+            if (stopTime[stopTimeID] - RunningTime(-currentBackGround.transform.position.x + canvas.transform.position.x) < 0.5f)//表明是需要暂停的情况
             {
                 isMoving = false;
                 Debug.Log("stop!!");
