@@ -18,16 +18,17 @@ public class CharacterClicked : MonoBehaviour {
     {
         if (selected == false)
         {
-            BottomBanner.GetComponent<BottomBanner>().SelectCharacter(this.transform.parent.name);//传入父亲的名字
+            BottomBanner.GetComponent<BottomBanner>().SelectCharacter(this.transform.parent.gameObject);//传入父亲的名字
             GetComponent<UnityEngine.UI.Image>().color = new Color32(156, 156, 156, 100);
             Debug.Log("Y");
             selected = true;
         }else
         {
-            BottomBanner.GetComponent<BottomBanner>().CancelCharacter(this.transform.parent.name);
+            BottomBanner.GetComponent<BottomBanner>().CancelCharacter(this.transform.parent.gameObject);
             selected = false;
             GetComponent<UnityEngine.UI.Image>().color = new Color32(156, 156, 156, 0);
         }
         
     }
+
 }

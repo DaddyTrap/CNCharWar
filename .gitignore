@@ -48,3 +48,7 @@ sysinfo.txt
 # Unity Debug Scene
 **/TestScript.cs
 **/TestScript.cs.meta
+Assets/Resources/Image/test.jpg
+Assets/Resources/Image/test2.jpg
+Assets/Resources/Image/test.jpg.meta
+Assets/Resources/Image/test2.jpg.meta
