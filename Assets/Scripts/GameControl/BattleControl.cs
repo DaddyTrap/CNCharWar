@@ -16,9 +16,15 @@ public class BattleControl : MonoBehaviour {
 
 	public BGControl bgControl;
 	public GameObject camera;
+	public CombineEffect combineEffect;
+
+	public bool battling = false;
 
 	public float bannerInterval = 2.0f;
 	IEnumerator GenerateNewChar() {
+		yield return new WaitUntil(()=>{
+			return battling;
+		});
 		banner.AddWord(CharManager.instance.GetRandomCharacter());
 		yield return new WaitForSeconds(bannerInterval);
 		StartCoroutine(GenerateNewChar());
@@ -72,7 +78,13 @@ public class BattleControl : MonoBehaviour {
 
 	void PlayerAttackHandler(AttackInfo attackInfo, float damage) {
 		// 玩家攻击
-		// 对所有敌人进行攻击
+		// 播放动画，动画结束时才真正造成伤害
+		if (battling) {
+			// TODO: 播放动画
+		}
+	}
+
+	void PlayerAttack(AttackInfo attackInfo, float damage) {
 		foreach (var i in enemies) {
 			i._OnAttacked(attackInfo, damage);
 		}
@@ -109,8 +121,16 @@ public class BattleControl : MonoBehaviour {
 			}
 		}
 
+		// 测试效果
 		if (Input.GetKeyDown(KeyCode.N)) {
-			NextBattle();
+			combineEffect.MakeEffect(new List<string>{"水", "石"}, "沯", ()=>{
+				Debug.Log("2 Callback");
+			});
+		}
+		if (Input.GetKeyDown(KeyCode.M)) {
+			combineEffect.MakeEffect(new List<string>{"水", "火", "火"}, "淡", ()=>{
+				Debug.Log("3 Callback");
+			});
 		}
 	}
 
@@ -142,6 +162,7 @@ public class BattleControl : MonoBehaviour {
 	int deadEnenmy = 0;
 	void EnemyDeadHandler() {
 		++deadEnenmy;
+		Debug.Log("敌人死亡");
 		if (deadEnenmy >= enemies.Count) {
 			// 所有敌人死亡
 			HandleWin();
@@ -150,7 +171,13 @@ public class BattleControl : MonoBehaviour {
 
 	void EnemyAttackHandler(AttackInfo attackInfo, float damage) {
 		// 敌人攻击
-		// 攻击玩家
+		// 播放动画，动画结束时才真正造成伤害
+		if (battling) {
+			// TODO: 播放动画
+		}
+	}
+
+	public void EnemyAttack(AttackInfo attackInfo, float damage) {
 		player._OnAttacked(attackInfo, damage);
 	}
 

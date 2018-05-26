@@ -42,8 +42,13 @@ public class CharCreature : MonoBehaviour {
 		if (attackInfo.buff != null) {
 			AddBuff(attackInfo.buff);
 		}
+		// 如果有治疗，则治疗
+		if (attackInfo.heal != null) {
+			Heal(attackInfo.heal);
+		}
 		// 触发Attack事件
 		var damage = attackInfo.damage * this.curInfo.atk;
+		Debug.Log(gameObject.name + " 发动攻击");
 		if (this.OnAttack != null) {
 			this.OnAttack(attackInfo, damage);
 		}
@@ -105,6 +110,9 @@ public class CharCreature : MonoBehaviour {
 	public event OnDeadHandler OnDead;
 	public delegate void OnCurSlotSizeChangedHandler(int size);
 	public event OnCurSlotSizeChangedHandler OnCurSlotSizeChanged;
+    public delegate void OnHPChangedHandler(float HPPercentage);//ZYQ HP改变时发射
+    public event OnHPChangedHandler OnHpChanged;
+
 	public virtual void Damage(float damage) {
     int lastCurSlotSize = curSlotSize;
 
@@ -116,8 +124,9 @@ public class CharCreature : MonoBehaviour {
       if (this.OnDead != null)
         this.OnDead();
 		}
-
-		if (curSlotSize != lastCurSlotSize) {//!!!
+        if (this.OnHpChanged != null)
+            this.OnHpChanged(curHp / curInfo.maxHp);//发射此时HP占比
+        if (curSlotSize != lastCurSlotSize) {//!!!
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
 		}
@@ -127,13 +136,15 @@ public class CharCreature : MonoBehaviour {
     int lastCurSlotSize = curSlotSize;
 
     // Deal Heal
-		if (curHp + heal <= curInfo.maxHp) {
-			curHp += heal;
+		var maxHp = curInfo.maxHp;
+		if (curHp + maxHp * heal <= curInfo.maxHp) {
+			curHp += maxHp * heal;
 		} else {
 			curHp = curInfo.maxHp;
 		}
-
-		if (curSlotSize != lastCurSlotSize) {
+        if (this.OnHpChanged != null)
+            this.OnHpChanged(curHp/curInfo.maxHp);
+        if (curSlotSize != lastCurSlotSize) {
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
 		}

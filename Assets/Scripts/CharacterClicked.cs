@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterClicked : MonoBehaviour {//绑在点击的MASK上，这一部分可以处理各种颜色的更改
     public GameObject BottomBanner;
     public bool selected=false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +17,7 @@ public class CharacterClicked : MonoBehaviour {//绑在点击的MASK上，这一
 	}
     public void TellBottomBanner()
     {
+
         if (selected == false)
         {
             BottomBanner.GetComponent<BottomBanner>().SelectCharacter(this.transform.parent.gameObject);//传入父亲的名字
@@ -30,5 +32,6 @@ public class CharacterClicked : MonoBehaviour {//绑在点击的MASK上，这一
         }
         
     }
+
 
 }
