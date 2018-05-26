@@ -43,17 +43,18 @@ public class CharCreature : MonoBehaviour {
 			AddBuff(attackInfo.buff);
 		}
 		// 如果有治疗，则治疗
-		if (attackInfo.heal != null) {
+		if (attackInfo.heal != 0) {
 			Heal(attackInfo.heal);
 		}
-		// 触发Attack事件
+		// 如果有伤害，则计算
 		var damage = attackInfo.damage * this.curInfo.atk;
 		Debug.Log(gameObject.name + " 发动攻击");
+		// 触发Attack事件
 		if (this.OnAttack != null) {
-			this.OnAttack(attackInfo, damage);
+			this.OnAttack(attackInfo, damage == 0 ? 0f : damage);
 		}
 
-        
+
 	}
 
 

@@ -60,14 +60,30 @@ public class BattleControl : MonoBehaviour {
 			Debug.Log("找到合成字，攻击");
 			if (player != null)
 				player.Attack(res);
-            OnCharacterFind(instance.SearchAttackCharacterByStrings(chars));//发送发现新字消息给DictionaryController;ZYQ添加
-        }
+			if (OnCharacterFind != null)
+				OnCharacterFind(instance.SearchAttackCharacterByStrings(chars));//发送发现新字消息给DictionaryController;ZYQ添加
+		}
 	}
 
 	void OnDestroy() {
 		if (player != null) {
 			player.OnDead -= PlayerDeadHandler;
 			player.OnAttack -= PlayerAttackHandler;
+		}
+	}
+
+	void PlayEffectOnPlayer(GameObject prefab) {
+		var newPrefab = Instantiate(prefab);
+		newPrefab.AddComponent(typeof(KillSelf));
+		newPrefab.transform.position = player.transform.position;
+	}
+
+	void PlayEffectOnEnemy(GameObject prefab) {
+		var newPrefab = Instantiate(prefab);
+		newPrefab.AddComponent(typeof(KillSelf));
+		if (enemies.Count > 0) {
+			newPrefab.transform.parent = enemies[0].transform;
+			newPrefab.transform.localPosition = new Vector3(0, 0, -4f);
 		}
 	}
 
@@ -80,13 +96,49 @@ public class BattleControl : MonoBehaviour {
 		// 玩家攻击
 		// 播放动画，动画结束时才真正造成伤害
 		if (battling) {
-			// TODO: 播放动画
+			// 播放动画
+			var id = attackInfo.charId;
+			// var id = 1;
+			var strs = CharManager.instance.idToStringsDict[id];
+			var charName = CharManager.instance.GetCharacterById(id);
+			Debug.Log(CharEffectManager.instance.effectDict[charName]);
+			if (strs.Count >= 2 && strs.Count < 4) {
+				// 如果能使用拼字效果，则播放拼字效果
+				Debug.Log("拼字效果");
+				combineEffect.MakeEffect(strs, charName, ()=>{
+					// 播放技能特效
+					if (attackInfo.damage != 0) {
+						Debug.Log("Play effect");
+						PlayEffectOnEnemy(CharEffectManager.instance.effectDict[charName]);
+					}
+					if (attackInfo.heal != 0) {
+						PlayEffectOnPlayer(CharEffectManager.instance.effectDict[charName]);
+					}
+
+					// 结算伤害
+					this.PlayerAttack(attackInfo, damage);
+				});
+			} else {
+				// 不能使用拼字效果，直接播放特效并结算
+				if (attackInfo.damage != 0) {
+					PlayEffectOnEnemy(CharEffectManager.instance.effectDict[charName]);
+				}
+				if (attackInfo.heal != 0) {
+					PlayEffectOnPlayer(CharEffectManager.instance.effectDict[charName]);
+				}
+
+				this.PlayerAttack(attackInfo, damage);
+			}
 		}
 	}
 
 	void PlayerAttack(AttackInfo attackInfo, float damage) {
-		foreach (var i in enemies) {
-			i._OnAttacked(attackInfo, damage);
+		// FIXME: 不知道为何会中途修改了迭代器？
+		// foreach (var i in enemies) {
+		// 	i._OnAttacked(attackInfo, damage);
+		// }
+		for (int i = 0; i < enemies.Count; ++i) {
+			enemies[i]._OnAttacked(attackInfo, damage);
 		}
 	}
 
@@ -122,15 +174,8 @@ public class BattleControl : MonoBehaviour {
 		}
 
 		// 测试效果
-		if (Input.GetKeyDown(KeyCode.N)) {
-			combineEffect.MakeEffect(new List<string>{"水", "石"}, "沯", ()=>{
-				Debug.Log("2 Callback");
-			});
-		}
-		if (Input.GetKeyDown(KeyCode.M)) {
-			combineEffect.MakeEffect(new List<string>{"水", "火", "火"}, "淡", ()=>{
-				Debug.Log("3 Callback");
-			});
+		if (Input.GetKeyDown(KeyCode.S)) {
+			battling = !battling;
 		}
 	}
 
@@ -173,7 +218,18 @@ public class BattleControl : MonoBehaviour {
 		// 敌人攻击
 		// 播放动画，动画结束时才真正造成伤害
 		if (battling) {
-			// TODO: 播放动画
+			// 播放动画
+			var charName = CharManager.instance.GetCharacterById(attackInfo.charId);
+			// var charName = CharManager.instance.GetCharacterById(1);
+			if (attackInfo.damage != 0) {
+				PlayEffectOnPlayer(CharEffectManager.instance.effectDict[charName]);
+			}
+			if (attackInfo.heal != 0) {
+				PlayEffectOnEnemy(CharEffectManager.instance.effectDict[charName]);
+			}
+
+			// 结算伤害
+			this.EnemyAttack(attackInfo, damage);
 		}
 	}
 

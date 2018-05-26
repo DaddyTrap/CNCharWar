@@ -16,7 +16,7 @@ public class CharImgManager {
 
   public Dictionary<string, Sprite> imgDict;
 
-  public CharImgManager() {
+  CharImgManager() {
     imgDict = new Dictionary<string, Sprite>();
     var imgs = Resources.LoadAll("单字", typeof(Sprite));
     foreach (var img in imgs) {

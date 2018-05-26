@@ -86,7 +86,6 @@ public class CharManager : MonoBehaviour {
 
 		foreach (var i in charTree.data) {
 			var node = new CharTreeNode();
-			Debug.Log(i.ToString());
 			characterTreeRootDict.Add(i.keyId, node);
 			// build tree
 			BuildTree(node, i);

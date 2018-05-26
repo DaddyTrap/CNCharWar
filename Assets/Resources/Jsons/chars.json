@@ -7,6 +7,7 @@
       "id": 1,
       "character": "火",
       "attackInfo": {
+        "charId": 1,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -17,6 +18,7 @@
       "id": 2,
       "character": "水",
       "attackInfo": {
+        "charId": 2,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -27,6 +29,7 @@
       "id": 3,
       "character": "石",
       "attackInfo": {
+        "charId": 3,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -37,6 +40,7 @@
       "id": 4,
       "character": "木",
       "attackInfo": {
+        "charId": 4,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -47,6 +51,7 @@
       "id": 5,
       "character": "口",
       "attackInfo": {
+        "charId": 5,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -57,6 +62,7 @@
       "id": 6,
       "character": "炻",
       "attackInfo": {
+        "charId": 6,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -67,6 +73,7 @@
       "id": 7,
       "character": "淡",
       "attackInfo": {
+        "charId": 7,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -77,6 +84,7 @@
       "id": 8,
       "character": "炑",
       "attackInfo": {
+        "charId": 8,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -87,6 +95,7 @@
       "id": 9,
       "character": "炎",
       "attackInfo": {
+        "charId": 9,
         "damage": 0.1,
         "heal": 0,
         "buff": null,
@@ -97,7 +106,8 @@
       "id": 10,
       "character": "沯",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+0,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -107,7 +117,8 @@
       "id": 11,
       "character": "呇",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+1,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -117,7 +128,8 @@
       "id": 12,
       "character": "沐",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+2,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -127,7 +139,8 @@
       "id": 13,
       "character": "磊",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+3,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -137,7 +150,8 @@
       "id": 14,
       "character": "杏",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+4,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -147,7 +161,8 @@
       "id": 15,
       "character": "林",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+5,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -157,7 +172,8 @@
       "id": 16,
       "character": "回",
       "attackInfo": {
-        "damage": 0.1,
+        "charId":
+6,        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
