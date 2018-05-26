@@ -14,11 +14,12 @@ public class BottomBanner : MonoBehaviour {
     public Sprite 石;
     public Sprite 口;
     public float deltaTime;
-    public List<string> selectedString;
+    public List<GameObject> selectedString;
+    public List<string> executeWord;
     // Use this for initialization
     void Start () {
-        test();
-        //StartCoroutine(GenerateWord());
+        //test();
+        StartCoroutine(GenerateWord());
 	}
 	IEnumerator GenerateWord()//每隔一段时间新增一次字
     {
@@ -73,12 +74,23 @@ public class BottomBanner : MonoBehaviour {
         }
     }
 
-    public void SelectCharacter(string word)
+    public void SelectCharacter(GameObject word)
     {
         selectedString.Add(word);
     }
-    public void CancelCharacter(string word)
+    public void CancelCharacter(GameObject word)
     {
         selectedString.Remove(word);
+    }
+    public void ExecuteWord()//开始执行技能；
+    {//先删除节点，再执行技能
+
+        for(int i = 0; i < selectedString.Count; ++i)
+        {
+            executeWord.Add(selectedString[i].name);
+            Destroy(selectedString[i].gameObject);
+        }
+        selectedString.Clear();
+        //Player
     }
 }

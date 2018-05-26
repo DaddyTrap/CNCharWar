@@ -10,6 +10,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
     IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject BottomBanner;//控制器——BottomBanner
+   // public GameObject tempContainer;//临时容器
     public RectTransform canvas;          //得到canvas的ugui坐标
     private RectTransform imgRect;        //得到图片的ugui坐标
     Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
@@ -55,8 +56,14 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
         bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, mouseDrag, eventData.enterEventCamera, out uguiPos);
         if (this.transform.parent != canvas.transform)
         {
+
+            this.transform.SetParent(canvas.transform);
             //Debug.Log("yess");
-            this.transform.parent = canvas.transform;//父节点变更
+            /*.SetActive(true);//唤醒容器
+
+            
+            tempContainer.transform.localPosition = uguiPos;
+            this.transform.SetParent(tempContainer.transform);*/
             //imgRect.anchoredPosition = offset + uguiPos;//跟随鼠标
         }
         if (isRect)
@@ -77,7 +84,9 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
     public void OnEndDrag(PointerEventData eventData)
     {
         offset = Vector2.zero;
-        Debug.Log("end");//此处应该开启技能
+
+        BottomBanner.GetComponent<BottomBanner>().ExecuteWord();
+        
     }
 
     //当鼠标进入图片时调用   对应接口   IPointerEnterHandler
