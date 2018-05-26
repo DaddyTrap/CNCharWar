@@ -14,6 +14,9 @@ public class BattleControl : MonoBehaviour {
 
 	public Battle[] battles;
 
+	public BGControl bgControl;
+	public GameObject camera;
+
 	public float bannerInterval = 2.0f;
 	IEnumerator GenerateNewChar() {
 		banner.AddWord(CharManager.instance.GetRandomCharacter());
@@ -29,6 +32,7 @@ public class BattleControl : MonoBehaviour {
 		if (player != null)
 			player.OnDead += PlayerDeadHandler;
 
+		NextBattle();
 		StartCoroutine(GenerateNewChar());
 	}
 
@@ -65,9 +69,48 @@ public class BattleControl : MonoBehaviour {
 		currentBattleIndex++;
 		// 如果还有下一个战斗
 		if (currentBattleIndex < battles.Length) {
+			// 调整背景图位置
+			bgControl.Next();
+			// 移动摄像头+玩家
+			if (currentBattleIndex != 0) {
+				MoveCameraAndPlayer(bgControl.distance);
+			}
 			LoadBattle(battles[currentBattleIndex]);
-			// TODO: 滚动背景图
 		}
+	}
+
+	public float moveSpeed = 0.1f;
+	void Update() {
+		if (move) {
+			var playerNext = Vector3.MoveTowards(player.transform.position, playerMoveTarget, moveSpeed);
+			var cameraNext = Vector3.MoveTowards(camera.transform.position, cameraMoveTarget, moveSpeed);
+			if (
+				Mathf.Abs(playerNext.x - player.transform.position.x) < float.Epsilon &&
+				Mathf.Abs(cameraNext.x - camera.transform.position.x) < float.Epsilon
+				) {
+				move = false;
+			} else {
+				player.transform.position = playerNext;
+				camera.transform.position = cameraNext;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.N)) {
+			NextBattle();
+		}
+	}
+
+	private bool move;
+	private Vector3 playerMoveTarget;
+	private Vector3 cameraMoveTarget;
+	void MoveCameraAndPlayer(float distance) {
+		move = true;
+		var pos = player.transform.position;
+		pos.x += distance;
+		playerMoveTarget = pos;
+		pos = camera.transform.position;
+		pos.x += distance;
+		cameraMoveTarget = pos;
 	}
 
 	void LoadBattle(Battle battle) {
