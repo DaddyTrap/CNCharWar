@@ -42,6 +42,7 @@ public class CharCreature : MonoBehaviour {
 		}
 		// 触发Attack事件
 		var damage = attackInfo.damage * this.curInfo.atk;
+		Debug.Log(gameObject.name + " 发动攻击");
 		if (this.OnAttack != null) {
 			this.OnAttack(attackInfo, damage);
 		}
