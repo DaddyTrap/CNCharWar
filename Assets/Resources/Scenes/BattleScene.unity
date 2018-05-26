@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af79b05f68f2af44be79fb81f288dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 952300296}
   enemies: []
   banner: {fileID: 1241423750}
   battles: []
@@ -460,7 +460,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f328cf4ad3406a243b0a9b04554aae1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicCharIds: 
+--- !u!1001 &952300294
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992683421182670, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 433803e8bb815c94a80e7af879cdf65e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &952300295 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1599694546390272, guid: 433803e8bb815c94a80e7af879cdf65e,
+    type: 2}
+  m_PrefabInternal: {fileID: 952300294}
+--- !u!114 &952300296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952300295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830c15f38455a4343ae175ebf4f8f6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 10
+  curHp: 1000
 --- !u!1 &1053714186
 GameObject:
   m_ObjectHideFlags: 0

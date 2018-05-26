@@ -57,6 +57,7 @@ public class BattleControl : MonoBehaviour {
 
 	void PlayerDeadHandler() {
 		// TODO: 处理玩家死亡事件: 游戏结束
+		Debug.Log("玩家死亡，结束战斗");
 	}
 
 	int currentBattleIndex = -1;
@@ -65,12 +66,17 @@ public class BattleControl : MonoBehaviour {
 		// 如果还有下一个战斗
 		if (currentBattleIndex < battles.Length) {
 			LoadBattle(battles[currentBattleIndex]);
+			// TODO: 滚动背景图
 		}
 	}
 
 	void LoadBattle(Battle battle) {
-		// TODO: 生成敌人
-		// TODO: 监听敌人死亡事件
+		// 生成敌人
+		// 监听敌人死亡事件
+		foreach (var i in battle.battleEnemies) {
+			i.gameObject.SetActive(true);
+			i.OnDead += EnemeyDeadHandler;
+		}
 	}
 
 	int deadEnenmy = 0;
@@ -84,6 +90,7 @@ public class BattleControl : MonoBehaviour {
 
 	void HandleWin() {
 		// TODO: 显示胜利提示等
+		Debug.Log("本场Battle胜利");
 		NextBattle();
 	}
 }
