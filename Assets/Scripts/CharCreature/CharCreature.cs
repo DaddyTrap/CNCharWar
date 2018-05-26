@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//update更新bufftime
+
 public class CharCreature : MonoBehaviour {
 	public CharCreatureInfo basicInfo;
 	public CharCreatureInfo deltaInfo;
@@ -18,7 +20,7 @@ public class CharCreature : MonoBehaviour {
 
 	public class Buff {
 		public BuffInfo buff;
-		public float pastTime;
+		public float pastTime;//过去的时间
 		public Buff(BuffInfo buff) {
 			this.buff = buff;
 			pastTime = 0f;
@@ -31,9 +33,27 @@ public class CharCreature : MonoBehaviour {
 		buffs = new List<Buff>();
 	}
 
-	public void Attack(List<string> characters) {
+	public virtual void Attack(AttackInfo attackInfo) {
 		// TODO: 具体攻击逻辑
+		for(int i = 0; i < buffs.Count; ++i) {
+
+		}
 	}
+	void Update() {
+			foreach(var i in buffs)
+			{
+					i.pastTime += Time.deltaTime;
+			}
+			for(int i = buffs.Count-1; i >=0; --i)
+			{
+					if (buffs[i].pastTime >= buffs[i].buff.time)
+					{
+							buffs.RemoveAt(i);//删除该buff
+					}
+			}
+	}
+
+
 
 	public delegate void OnAttackedHandler(AttackInfo attackInfo);
 	public event OnAttackedHandler OnAttacked;
@@ -42,6 +62,7 @@ public class CharCreature : MonoBehaviour {
 		bool found = false;
 		foreach (var i in buffs) {
 			// 检查是否是相同的 buff
+      // FIXME: 不能确定引用是否保持
 			if (i.buff.charCreatureInfo == info.charCreatureInfo) {
 				// 如果是相同 buff ，则重置 buff 时间
 				i.pastTime = 0f;

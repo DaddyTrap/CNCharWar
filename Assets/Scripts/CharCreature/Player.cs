@@ -11,10 +11,9 @@ public class Player : CharCreature {
     {
         this.gameObject.GetComponent<Animator>().SetBool("isStop", false);
     }
-
     public override void SetStop()
     {
-
         this.gameObject.GetComponent<Animator>().SetBool("isStop", true);
     }
+
 }

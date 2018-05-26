@@ -22,28 +22,12 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
 
     // Use this for initialization
     void Start () {
-        test();
-       // StartCoroutine(GenerateWord());
-	}
-	IEnumerator GenerateWord()//每隔一段时间新增一次字
-    {
-        AddWord("木");
 
-        yield return new WaitForSeconds(deltaTime);
-        StartCoroutine(GenerateWord());
-    }
+	}
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
-    void test()
-    {
-       // AddWord("火");
-        AddWord("木");
-        AddWord("水");
-        AddWord("石");
-        Debug.Log("yes");
-    }
     public void AddWord(string word)//输入一个字，增加这个字体的
     {
 
@@ -92,7 +76,9 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
         for(int i = 0; i < selectedString.Count; ++i)
         {
             executeWord.Add(selectedString[i].name);
+            BottomString.Remove(selectedString[i].gameObject);
             Destroy(selectedString[i].gameObject);
+
         }
         selectedString.Clear();
         //Player
@@ -100,5 +86,6 @@ public class BottomBanner : MonoBehaviour {//职责：隔一段时间来一个�
         {
             this.ConfirmSelectedCharacter(executeWord);
         }
+        executeWord.Clear();
     }
 }
