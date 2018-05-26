@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseContinue : MonoBehaviour {
@@ -15,4 +16,14 @@ public class PauseContinue : MonoBehaviour {
         PausePanel.SetActive(true);
     }
 
+    public void ExitPause()
+    {
+        PauseImage.gameObject.SetActive(false);
+        PausePanel.SetActive(false);
+    }
+
+    public void backToStart()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }
