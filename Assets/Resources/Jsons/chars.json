@@ -5,67 +5,163 @@
   "data": [
     {
       "id": 1,
-      "character": "火"
+      "character": "火",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 2,
-      "character": "水"
+      "character": "水",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 3,
-      "character": "石"
+      "character": "石",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 4,
-      "character": "木"
+      "character": "木",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 5,
-      "character": "口"
+      "character": "口",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 6,
-      "character": "炻"
+      "character": "炻",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 7,
-      "character": "淡"
+      "character": "淡",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 8,
-      "character": "炑"
+      "character": "炑",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 9,
-      "character": "炎"
+      "character": "炎",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 10,
-      "character": "沯"
+      "character": "沯",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 11,
-      "character": "呇"
+      "character": "呇",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 12,
-      "character": "沐"
+      "character": "沐",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 13,
-      "character": "磊"
+      "character": "磊",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 14,
-      "character": "杏"
+      "character": "杏",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 15,
-      "character": "林"
+      "character": "林",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     },
     {
       "id": 16,
-      "character": "回"
+      "character": "回",
+      "attackInfo": {
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
     }
   ]
 }

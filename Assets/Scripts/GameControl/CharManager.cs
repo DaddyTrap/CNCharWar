@@ -31,6 +31,7 @@ public class CharManager : MonoBehaviour {
 	public class CharJsonItem {
 		public int id;
 		public string character;
+		public AttackInfo attackInfo;
 	}
 
 	[System.Serializable]
@@ -78,6 +79,7 @@ public class CharManager : MonoBehaviour {
 		foreach (var i in charJson.data) {
 			characterDict.Add(i.id, i.character);
 			characterRevDict.Add(i.character, i.id);
+			charaterAttackInfoDict.Add(i.id, i.attackInfo);
 		}
 
 		foreach (var i in charTree.data) {
@@ -105,12 +107,14 @@ public class CharManager : MonoBehaviour {
 
 	public Dictionary<int, string> characterDict;
 	public Dictionary<string, int> characterRevDict;
+	public Dictionary<int, AttackInfo> charaterAttackInfoDict;
 	public Dictionary<int, CharTreeNode> characterTreeRootDict;
 	public List<int> basicCharIds;
 
 	void Init() {
 		characterDict = new Dictionary<int, string>();
 		characterTreeRootDict = new Dictionary<int, CharTreeNode>();
+		charaterAttackInfoDict = new Dictionary<int, AttackInfo>();
 		characterRevDict = new Dictionary<string, int>();
 		basicCharIds = new List<int>();
 		LoadJson();

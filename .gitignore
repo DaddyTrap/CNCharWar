@@ -44,3 +44,7 @@ sysinfo.txt
 # Unity Debug Scene
 **/DebugScene.unity
 **/DebugScene.unity.meta
+
+# Unity Debug Scene
+**/TestScript.cs
+**/TestScript.cs.meta
