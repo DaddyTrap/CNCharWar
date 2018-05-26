@@ -13,7 +13,9 @@ public class CharCreature : MonoBehaviour {
 			return Mathf.CeilToInt(curHp / basicInfo.maxHp * maxSlotSize);
 		}
 	}
-	public CharCreatureInfo curInfo {
+    public DictionaryManager dictionaryManager;
+
+    public CharCreatureInfo curInfo {
 		get { return basicInfo + deltaInfo; }
 	}
 	public float curHp = 1000;
@@ -38,6 +40,7 @@ public class CharCreature : MonoBehaviour {
 		for(int i = 0; i < buffs.Count; ++i) {
 
 		}
+        dictionaryManager.NewFoundCharacter("string");//!!!!!!Todo:此处将传入技能字
 	}
 	void Update() {
 			foreach(var i in buffs)
