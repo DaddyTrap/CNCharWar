@@ -185,8 +185,23 @@ public class CharManager : MonoBehaviour {
 			return null;
 		}
 	}
+    public string SearchAttackCharacterByStrings(List<string> strings)
+    {
+        if (strings.Count <= 0) return null;
+        var ids = CharStringsToIds(strings);
+        var id = SearchTreeByIds(characterTreeRootDict[ids[0]], ids);
+        if (id != null)
+        {
+            return characterDict[id.Value];
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-	public string GetRandomCharacter() {
+
+    public string GetRandomCharacter() {
 		var random = Random.Range(0, basicCharIds.Count - 1);
 		return characterDict[basicCharIds[random]];
 	}

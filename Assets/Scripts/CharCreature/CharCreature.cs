@@ -13,7 +13,7 @@ public class CharCreature : MonoBehaviour {
 			return Mathf.CeilToInt(curHp / basicInfo.maxHp * maxSlotSize);
 		}
 	}
-    public DictionaryManager dictionaryManager;
+
 
     public CharCreatureInfo curInfo {
 		get { return basicInfo + deltaInfo; }
@@ -52,8 +52,11 @@ public class CharCreature : MonoBehaviour {
 		if (this.OnAttack != null) {
 			this.OnAttack(attackInfo, damage);
 		}
-        dictionaryManager.NewFoundCharacter("string");//!!!!!!Todo:此处将传入技能字
+
+        
 	}
+
+
 	void Update() {
 		var newDeltaInfo = new CharCreatureInfo(0, 0, 0);
 		for(int i = buffs.Count - 1; i >= 0; --i) {
@@ -119,7 +122,7 @@ public class CharCreature : MonoBehaviour {
         this.OnDead();
 		}
 
-		if (curSlotSize != lastCurSlotSize) {
+		if (curSlotSize != lastCurSlotSize) {//!!!
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
 		}
