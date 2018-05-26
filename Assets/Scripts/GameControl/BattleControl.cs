@@ -121,12 +121,12 @@ public class BattleControl : MonoBehaviour {
 
 		// 测试效果
 		if (Input.GetKeyDown(KeyCode.N)) {
-			combineEffect.MakeEffect(new List<string>{"水", "石"}, "水", ()=>{
+			combineEffect.MakeEffect(new List<string>{"水", "石"}, "沯", ()=>{
 				Debug.Log("2 Callback");
 			});
 		}
 		if (Input.GetKeyDown(KeyCode.M)) {
-			combineEffect.MakeEffect(new List<string>{"水", "火", "火"}, "石", ()=>{
+			combineEffect.MakeEffect(new List<string>{"水", "火", "火"}, "淡", ()=>{
 				Debug.Log("3 Callback");
 			});
 		}
