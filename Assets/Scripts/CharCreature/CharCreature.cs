@@ -33,6 +33,7 @@ public class CharCreature : MonoBehaviour {
 		buffs = new List<Buff>();
 	}
 
+	// FIXME: 接口需要修改
 	public virtual void Attack(List<string> characters) {
 		// TODO: 具体攻击逻辑
         for(int i = 0; i < buffs.Count; ++i)//计算buff的最终值
@@ -66,6 +67,7 @@ public class CharCreature : MonoBehaviour {
 		bool found = false;
 		foreach (var i in buffs) {
 			// 检查是否是相同的 buff
+      // FIXME: ????
 			if (i.buff.charCreatureInfo == info.charCreatureInfo) {
 				// 如果是相同 buff ，则重置 buff 时间
 				i.pastTime = 0f;
