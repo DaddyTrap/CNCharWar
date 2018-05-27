@@ -44,6 +44,7 @@ public class CharCreature : MonoBehaviour {
 		}
 		// 如果有治疗，则治疗
 		if (attackInfo.heal != 0) {
+			MusicManager.instance.PlaySE("heal");
 			Heal(attackInfo.heal);
 		}
 		// 如果有伤害，则计算

@@ -145,6 +145,15 @@ public class BattleControl : MonoBehaviour {
 		for (int i = 0; i < enemies.Count; ++i) {
 			enemies[i]._OnAttacked(attackInfo, damage);
 		}
+
+		// 播放音效
+		if (attackInfo.heal == 0) {
+			// 随机播放某一个“石”音效
+			var rnd = Random.Range(1, 3);
+			var seName = "石" + " (" + rnd + ")";
+			Debug.Log(seName);
+			MusicManager.instance.PlaySE(seName);
+		}
 	}
 
 	int currentBattleIndex = -1;
@@ -160,6 +169,10 @@ public class BattleControl : MonoBehaviour {
 			}
 			LoadBattle(battles[currentBattleIndex]);
 		}
+		// 如果是最后一个战斗
+		if (currentBattleIndex == battles.Length - 1) {
+			MusicManager.instance.PlaySE("warning");
+		}
 	}
 
 	public float moveSpeed = 0.1f;
@@ -174,6 +187,9 @@ public class BattleControl : MonoBehaviour {
 				) {
 				move = false;
 				battling = true;
+				if (currentBattleIndex == battles.Length - 1) {
+					MusicManager.instance.PlayBGM("金光布袋戏 - 纯阳怒潮");
+				}
 			} else {
 				player.transform.position = playerNext;
 				camera.transform.position = cameraNext;
