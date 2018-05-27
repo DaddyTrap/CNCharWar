@@ -14,11 +14,15 @@ public class BattleControl : MonoBehaviour {
 
 	public Battle[] battles;
 
+	public WinOrFail winOrFail;
+
 	public BGControl bgControl;
 	public GameObject camera;
 	public CombineEffect combineEffect;
 
 	public bool battling = false;
+
+	public Transform playerPos, enemyPos;
 
 	public float bannerInterval = 2.0f;
 	IEnumerator GenerateNewChar() {
@@ -76,21 +80,19 @@ public class BattleControl : MonoBehaviour {
 	void PlayEffectOnPlayer(GameObject prefab) {
 		var newPrefab = Instantiate(prefab);
 		newPrefab.AddComponent(typeof(KillSelf));
-		newPrefab.transform.position = player.transform.position;
+		newPrefab.transform.position = playerPos.position;
 	}
 
 	void PlayEffectOnEnemy(GameObject prefab) {
 		var newPrefab = Instantiate(prefab);
 		newPrefab.AddComponent(typeof(KillSelf));
-		if (enemies.Count > 0) {
-			newPrefab.transform.parent = enemies[0].transform;
-			newPrefab.transform.localPosition = new Vector3(0, 0, -4f);
-		}
+		newPrefab.transform.position = enemyPos.position;
 	}
 
 	void PlayerDeadHandler() {
-		// TODO: 处理玩家死亡事件: 游戏结束
+		// 处理玩家死亡事件: 游戏结束
 		Debug.Log("玩家死亡，结束战斗");
+		winOrFail.showLoseUI();
 	}
 
 	void PlayerAttackHandler(AttackInfo attackInfo, float damage) {
@@ -176,9 +178,9 @@ public class BattleControl : MonoBehaviour {
 			}
 		}
 
-		// 测试效果
-		if (Input.GetKeyDown(KeyCode.S)) {
-			battling = !battling;
+		// 开始游戏
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+			battling = true;
 		}
 	}
 
@@ -193,10 +195,21 @@ public class BattleControl : MonoBehaviour {
 		pos = camera.transform.position;
 		pos.x += distance;
 		cameraMoveTarget = pos;
+
+		pos = playerPos.position;
+		pos.x += distance;
+		playerPos.position = pos;
+
+		pos = enemyPos.position;
+		pos.x += distance;
+		enemyPos.position = pos;
 	}
 
 	void LoadBattle(Battle battle) {
 		enemies.Clear();
+		foreach (var i in enemies) {
+			Destroy(i.gameObject);
+		}
 		// 生成敌人
 		foreach (var i in battle.battleEnemies) {
 			enemies.Add(i);
@@ -242,9 +255,14 @@ public class BattleControl : MonoBehaviour {
 
 	// bool canNext = false;
 	void HandleWin() {
-		// TODO: 显示胜利提示等
+		// 显示胜利提示等
 		Debug.Log("本场Battle胜利");
 		// canNext = true;
-		NextBattle();
+		if (currentBattleIndex >= battles.Length - 1) {
+			battling = false;
+			winOrFail.showWinUI();
+		} else {
+			NextBattle();
+		}
 	}
 }
