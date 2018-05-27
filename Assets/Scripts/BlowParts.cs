@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public int currentPart;//
@@ -9,6 +10,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public bool goExplode = false;
     public float waitSeconds=3f;
     public GameObject Explosion;//爆炸的粒子效果
+    public Sprite Remaining;//遗留下来的墨水
 	// Use this for initialization
 	void Start () {
         this.GetComponent<Enemy>().OnCurSlotSizeChanged += ThinkBlow;//订阅
@@ -37,23 +39,29 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         if (goShake == true)
         {
             //StartCoroutine();
-            this.transform.GetChild(currentPart).gameObject.GetComponent<Animator>().SetBool("isStop", true);
+            
             this.transform.position += new Vector3(Random.Range(-0.02f, 0.02f), Random.Range(-0.02f, 0.02f), 0);
         }
-        if (Input.GetButtonDown("Fire1"))//测试用！
+        /*if (Input.GetButtonDown("Fire1"))//测试用！
         {
             Blow();
-        }
+        }*/
 
 	}
     IEnumerator ExplodeInDelay()
     {
+        this.transform.GetChild(currentPart).gameObject.GetComponent<Animator>().SetBool("isStop", true);
         yield return new WaitForSeconds(1f);//抖完
         var tempPC = Instantiate(Explosion);
         tempPC.transform.position = this.transform.position;//移动到该位置
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         tempPC.GetComponent<ParticleSystem>().Play();//播放爆炸动画
         Debug.Log("Exploded");
+
+        this.GetComponent<SpriteRenderer>().sprite = Remaining;
+        this.transform.GetChild(currentPart).gameObject.SetActive(false);
+        goShake = false;
+        
     }
 
     IEnumerator FadeOutInDelay(GameObject toFade)
