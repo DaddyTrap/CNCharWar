@@ -207,6 +207,9 @@ public class BattleControl : MonoBehaviour {
 
 	void LoadBattle(Battle battle) {
 		enemies.Clear();
+		foreach (var i in enemies) {
+			Destroy(i.gameObject);
+		}
 		// 生成敌人
 		foreach (var i in battle.battleEnemies) {
 			enemies.Add(i);

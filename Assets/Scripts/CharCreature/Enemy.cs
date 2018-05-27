@@ -23,9 +23,6 @@ public class Enemy : CharCreature {
     void Start() {
         StartAttack();
         // TODO: 播放死亡动画
-        this.OnDead += ()=>{
-            Destroy(gameObject);
-        };
     }
 
     int seqIndex = 0;
