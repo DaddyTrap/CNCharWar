@@ -31,7 +31,7 @@ public class MusicManager : MonoBehaviour
         BGMSource = Instantiate(AudioSourcePrefab, AudioSourcesGObj.transform);
         BGMAudioSource = BGMSource.GetComponent<AudioSource>();
         BGMAudioSource.loop = true;
-
+        //BGMAudioSource.Stop();
         SEAudioSourceList = new List<AudioSource>();
     }
 
@@ -63,7 +63,10 @@ public class MusicManager : MonoBehaviour
 
     public void StopBGM()
     {
+        Debug.Log("音乐停止");
+        Debug.Log(BGMAudioSource.isPlaying);
         BGMAudioSource.Stop();
+        Debug.Log(BGMAudioSource.isPlaying);
     }
 
     public AudioSource PlaySE(string name)

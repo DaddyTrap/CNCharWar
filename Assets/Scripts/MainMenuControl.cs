@@ -26,18 +26,21 @@ public class MainMenuControl : MonoBehaviour
 
     public void firstLevel()
     {
+        MusicManager.instance.PlaySE("click");
         FadeInOut.instance.transition();
         SceneManager.LoadScene("BattleScene");
     }
 
     public void secondLevel()
     {
+        MusicManager.instance.PlaySE("click");
         FadeInOut.instance.transition();
         SceneManager.LoadScene("BattleScene");
     }
 
     public void back()
     {
+        MusicManager.instance.PlaySE("click");
         FadeInOut.instance.transition();
         MenuPanel.SetActive(true);
         LevelPanel.SetActive(false);
@@ -47,6 +50,7 @@ public class MainMenuControl : MonoBehaviour
 
     public void openTujian()
     {
+        MusicManager.instance.PlaySE("click");
         tujian.SetActive(true);
         LevelPanel.SetActive(false);
         MenuPanel.SetActive(true);
@@ -55,6 +59,7 @@ public class MainMenuControl : MonoBehaviour
 
     public void openLevel()
     {
+        MusicManager.instance.PlaySE("click");
         MenuPanel.SetActive(false);
         MenuIamge.gameObject.SetActive(false);
         LevelPanel.SetActive(true);

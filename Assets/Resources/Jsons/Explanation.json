@@ -2,72 +2,80 @@
 	"data":[
 		{
 			"character":"炻",
-			"explanation":"介于陶器和瓷器之间的一种陶瓷制品"
+			"explanation":"shi，介于陶器和瓷器之间的一种陶瓷制品。使用技能可以形成5s的防御效果。"
 		},
 		{
 			"character":"淡",
-			"explanation":"（可以做buff减敌人攻击力）"
+			"explanation":"稀薄，跟“ 浓 ” 相对。味道不浓或特指不咸;使用技能可以给敌方施加持续3s的减弱效果。"
 		},
 		{
 			"character":"炑",
-			"explanation":"火炽"
+			"explanation":"mu，意思为火炽。使用技能可以造成单倍攻击伤害。"
 		},
 		{
 			"character":"燊",
-			"explanation":"烧的很热烈"
+			"explanation":"shen,旺盛。其字形象征火在木上燃烧热烈，火木旺盛。使用技能可以造成三倍攻击。"
 		},
-				{
+		{
+			"character":"焚",
+			"explanation":"fen如火烧丛木。古人焚烧杂草，以擒获野兽，并开垦成农田。使用技能可以造成双倍攻击。"
+		},
+		{
 			"character":"炎",
-			"explanation":""
+			"explanation":"火光上升，火苗升腾。使用技能可以造成单倍攻击伤害。"
 		},
 		{
 			"character":"焱",
-			"explanation":"光华，光焰，也指光采闪耀"
+			"explanation":"yan,光华，光焰，也指光采闪耀"
 		},
 		{
 			"character":"燚",
-			"explanation":"火的样子"
+			"explanation":"yi，一是形容火剧烈燃烧的样子，二在人名里有平安的意思。使用技能可以造成三倍攻击。"
 		},
 		{
 			"character":"沯",
-			"explanation":"水激石的样子"
+			"explanation":"za，水激石的样子。有滴水穿石之意。使用技能可以造成单倍攻击伤害。"
 		},
 				{
 			"character":"呇",
-			"explanation":"水从地下冒出"
+			"explanation":"qi，地下冒出的水,也是泉水。使用技能可以造成单倍攻击伤害。"
 		},
 		{
 			"character":"沐",
-			"explanation":"（可以做回复技能）"
+			"explanation":"mu，指洗头发泽；整治；米汁；姓。使用技能可以给己方恢复15%的生命。"
 		},
 
 		{
 			"character":"淼",
-			"explanation":"水大的样子"
+			"explanation":"miao水大的样子。使用技能可以造成双倍攻击伤害。"
 		},
 				{
 			"character":"磊",
-			"explanation":"很多石头堆垒在一起"
+			"explanation":"lei 三“石”为“磊”，意为很多石头堆垒在一起。使用技能可以造成双倍攻击伤害。"
 		},
 		{
 			"character":"杏",
-			"explanation":"（可以设计成回复"
+			"explanation":"指一种落叶乔木，叶卵形，花白色或淡红色，果实称“杏儿”。使用技能可以给己方恢复15%的生命。"
 		},
 		{
 			"character":"林",
-			"explanation":""
+			"explanation":"后引申为人或者事物汇集处，延伸为众多的样子。使用技能可以给己方恢复15%的生命。"
 		},
 		{
 			"character":"森",
-			"explanation":""
+			"explanation":"本意是树木丛生繁密，引申义是从林从木，整齐而严肃.使用技能可以给己方恢复30%的生命。"
 		},
 				{
 			"character":"回",
-			"explanation":"回复技能"
+			"explanation":"hui，象形，甲骨文象渊水回旋之形。使用技能可以给己方恢复15%的生命。"
+		},
+		{
+			"character":"品",
+			"explanation":"三个表多数,意即众多的人。使用技能可以给己方形成5s的攻击加强效果。"
 		},
 		{
 			"character":"烎",
-			"explanation":"斗志昂扬，热血沸腾"
+			"explanation":"yin,被游戏玩家们用来形容充沛的竞技状态。使用技能可以给己方形成5s的攻击加强效果。"
 		}
 	]
 

@@ -21,7 +21,8 @@ public class Enemy : CharCreature {
     }
 
     void Start() {
-        StartAttack();
+        StartCoroutine(StartAttack());
+        // TODO: 播放死亡动画
     }
 
     int seqIndex = 0;
@@ -32,7 +33,8 @@ public class Enemy : CharCreature {
     }
 
     IEnumerator Attacking() {
-        this.Attack(attackSequence[seqIndex++]);
+        this.Attack(attackSequence[seqIndex]);
+        seqIndex = (seqIndex + 1) % attackSequence.Length;
         yield return new WaitForSeconds(attackInterval);
         StartCoroutine(Attacking());
     }
