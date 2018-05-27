@@ -70,9 +70,13 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         this.GetComponent<SpriteRenderer>().sprite = Remaining;
         this.transform.GetChild(currentPart).gameObject.SetActive(false);//所有子物体都应该消失
         goShake = false;//停止抖动
-        
+        StartCoroutine(killInk(this.gameObject));
     }
-
+    IEnumerator killInk(GameObject s)
+    {
+        yield return new WaitForSeconds(7f);
+        Destroy(s);
+    }
     IEnumerator FadeOutInDelay(GameObject toFade)
     {
         yield return new WaitForSeconds(waitSeconds);
