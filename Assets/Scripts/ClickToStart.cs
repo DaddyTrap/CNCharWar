@@ -9,6 +9,11 @@ public class ClickToStart : MonoBehaviour
     public GameObject inner;
     public GameObject jie;
     public GameObject zi;
+    public void Start()
+    {
+        MusicManager.instance.PlayBGM("China_openbgm");
+    }
+
     public void ClickStart()
     {
         Animation[] Animations1 = start.GetComponentsInChildren<Animation>();
