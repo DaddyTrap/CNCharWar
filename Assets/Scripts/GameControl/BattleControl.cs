@@ -80,12 +80,14 @@ public class BattleControl : MonoBehaviour {
 	void PlayEffectOnPlayer(GameObject prefab) {
 		var newPrefab = Instantiate(prefab);
 		newPrefab.AddComponent(typeof(KillSelf));
+		newPrefab.transform.localScale = new Vector3(4f, 4f, 1f);
 		newPrefab.transform.position = playerPos.position;
 	}
 
 	void PlayEffectOnEnemy(GameObject prefab) {
 		var newPrefab = Instantiate(prefab);
 		newPrefab.AddComponent(typeof(KillSelf));
+		newPrefab.transform.localScale = new Vector3(4f, 4f, 1f);
 		newPrefab.transform.position = enemyPos.position;
 	}
 
