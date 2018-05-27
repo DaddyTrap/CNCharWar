@@ -103,9 +103,9 @@ public class DictionaryManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         battleControl.OnCharacterFind += NewFoundCharacter;//不打算写结束监听
-        /*NewFoundCharacter("沯");
+        NewFoundCharacter("沯");
         NewFoundCharacter("呇");
-        NewFoundCharacter("炎");*/
+        NewFoundCharacter("炎");
 
 
         GenerateDictionaryForm();
@@ -140,5 +140,6 @@ public class DictionaryManager : MonoBehaviour {
     public void ShowUp()
     {
         this.gameObject.SetActive(true);
+       
     }
 }
