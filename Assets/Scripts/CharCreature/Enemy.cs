@@ -26,6 +26,7 @@ public class Enemy : CharCreature {
 
     int seqIndex = 0;
     IEnumerator StartAttack() {
+        Debug.Log("敌人开始攻击");
         yield return new WaitForSeconds(startTime);
         StartCoroutine(Attacking());
     }

@@ -25,6 +25,7 @@ public class BattleControl : MonoBehaviour {
 		yield return new WaitUntil(()=>{
 			return battling;
 		});
+		Debug.Log("加入字");
 		banner.AddWord(CharManager.instance.GetRandomCharacter());
 		yield return new WaitForSeconds(bannerInterval);
 		StartCoroutine(GenerateNewChar());
@@ -160,6 +161,7 @@ public class BattleControl : MonoBehaviour {
 	public float moveSpeed = 0.1f;
 	void Update() {
 		if (move) {
+			battling = false;
 			var playerNext = Vector3.MoveTowards(player.transform.position, playerMoveTarget, moveSpeed);
 			var cameraNext = Vector3.MoveTowards(camera.transform.position, cameraMoveTarget, moveSpeed);
 			if (
@@ -167,6 +169,7 @@ public class BattleControl : MonoBehaviour {
 				Mathf.Abs(cameraNext.x - camera.transform.position.x) < float.Epsilon
 				) {
 				move = false;
+				battling = true;
 			} else {
 				player.transform.position = playerNext;
 				camera.transform.position = cameraNext;
@@ -237,9 +240,11 @@ public class BattleControl : MonoBehaviour {
 		player._OnAttacked(attackInfo, damage);
 	}
 
+	// bool canNext = false;
 	void HandleWin() {
 		// TODO: 显示胜利提示等
 		Debug.Log("本场Battle胜利");
+		// canNext = true;
 		NextBattle();
 	}
 }

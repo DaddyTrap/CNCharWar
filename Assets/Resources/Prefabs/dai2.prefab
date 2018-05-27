@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289258850612166}
   - component: {fileID: 95612427140907806}
+  - component: {fileID: 114308617440970984}
   m_Layer: 0
   m_Name: dai2
   m_TagString: Untagged
@@ -298,6 +299,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114308617440970984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199941509574736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830c15f38455a4343ae175ebf4f8f6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 200
+    atk: 120
+    def: 50
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 7
+  curHp: 200
 --- !u!212 &212340986428888624
 SpriteRenderer:
   m_ObjectHideFlags: 1

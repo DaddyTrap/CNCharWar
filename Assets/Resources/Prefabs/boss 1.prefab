@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4564527363931236}
   - component: {fileID: 95371158539593802}
+  - component: {fileID: 114658943532734702}
   m_Layer: 0
   m_Name: boss 1
   m_TagString: Untagged
@@ -538,6 +539,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114658943532734702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167462059141222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 840
+    atk: 65
+    def: 60
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 16
+  curHp: 840
+  startTime: 6
+  attackInterval: 6
+  attackSequence:
+  - charId: 17
+    damage: 1
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+  - charId: 17
+    damage: 1
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+  - charId: 6
+    damage: 1.86
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
 --- !u!212 &212006762159309104
 SpriteRenderer:
   m_ObjectHideFlags: 1

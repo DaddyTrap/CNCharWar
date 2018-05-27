@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4126377852675656}
   - component: {fileID: 95506682897976860}
+  - component: {fileID: 114562533756991610}
   m_Layer: 0
   m_Name: xiaoguai_2
   m_TagString: Untagged
@@ -178,6 +179,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114562533756991610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544160666222972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicInfo:
+    maxHp: 320
+    atk: 58
+    def: 40
+  deltaInfo:
+    maxHp: 0
+    atk: 0
+    def: 0
+  maxSlotSize: 4
+  curHp: 320
+  startTime: 5
+  attackInterval: 5
+  attackSequence:
+  - charId: 9
+    damage: 1
+    heal: 0
+    buff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
+    debuff:
+      charCreatureInfo:
+        maxHp: 0
+        atk: 0
+        def: 0
+      time: 0
 --- !u!212 &212071307239227758
 SpriteRenderer:
   m_ObjectHideFlags: 1

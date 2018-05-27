@@ -106,8 +106,8 @@
       "id": 10,
       "character": "沯",
       "attackInfo": {
-        "charId":
-0,        "damage": 0.1,
+        "charId":0,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -117,8 +117,8 @@
       "id": 11,
       "character": "呇",
       "attackInfo": {
-        "charId":
-1,        "damage": 0.1,
+        "charId":1,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -128,8 +128,8 @@
       "id": 12,
       "character": "沐",
       "attackInfo": {
-        "charId":
-2,        "damage": 0.1,
+        "charId": 2,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -139,8 +139,8 @@
       "id": 13,
       "character": "磊",
       "attackInfo": {
-        "charId":
-3,        "damage": 0.1,
+        "charId": 3,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -150,8 +150,8 @@
       "id": 14,
       "character": "杏",
       "attackInfo": {
-        "charId":
-4,        "damage": 0.1,
+        "charId": 4,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -161,8 +161,8 @@
       "id": 15,
       "character": "林",
       "attackInfo": {
-        "charId":
-5,        "damage": 0.1,
+        "charId": 5,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -172,8 +172,19 @@
       "id": 16,
       "character": "回",
       "attackInfo": {
-        "charId":
-6,        "damage": 0.1,
+        "charId": 6,
+        "damage": 0.1,
+        "heal": 0,
+        "buff": null,
+        "debuff": null
+      }
+    },
+    {
+      "id": 17,
+      "character": "品",
+      "attackInfo": {
+        "charId": 17,
+        "damage": 0.1,
         "heal": 0,
         "buff": null,
         "debuff": null
