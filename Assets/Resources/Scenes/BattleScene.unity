@@ -1731,6 +1731,11 @@ Prefab:
       propertyPath: attackSequence.Array.data[0].charId
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114658943532734702, guid: f27ea1f7cc3fafe4288cfa45abf51cfd,
+        type: 2}
+      propertyPath: attackSequence.Array.data[2].damage
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f27ea1f7cc3fafe4288cfa45abf51cfd, type: 2}
   m_IsPrefabParent: 0

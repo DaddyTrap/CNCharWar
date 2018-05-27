@@ -293,9 +293,14 @@ public class BattleControl : MonoBehaviour {
 		// canNext = true;
 		if (currentBattleIndex >= battles.Length - 1) {
 			battling = false;
-			winOrFail.showWinUI();
+			StartCoroutine(GotoWin());
 		} else {
 			NextBattle();
 		}
+	}
+
+	IEnumerator GotoWin() {
+		yield return new WaitForSeconds(3f);
+		winOrFail.showWinUI();
 	}
 }
