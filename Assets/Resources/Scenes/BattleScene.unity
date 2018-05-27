@@ -743,7 +743,7 @@ Prefab:
       objectReference: {fileID: 869568403}
     - target: {fileID: 1853562151077130, guid: fb056831686f35446986ada9c29a47bb, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 223167994853202422, guid: fb056831686f35446986ada9c29a47bb,
         type: 2}
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   battling: 0
   playerPos: {fileID: 174746050}
   enemyPos: {fileID: 1253566275}
-  bannerInterval: 2
+  bannerInterval: 1
   moveSpeed: 0.05
 --- !u!4 &872446555
 Transform:
@@ -1938,6 +1938,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114308617440970984, guid: 4fc45dc0b1d3c8f4493b05e67bf43f59,
+        type: 2}
+      propertyPath: basicInfo.maxHp
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308617440970984, guid: 4fc45dc0b1d3c8f4493b05e67bf43f59,
+        type: 2}
+      propertyPath: curHp
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fc45dc0b1d3c8f4493b05e67bf43f59, type: 2}
   m_IsPrefabParent: 0
@@ -2067,7 +2077,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1535332978729116, guid: 8c8dadf2bd27cfe42a57f21854c081d3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c8dadf2bd27cfe42a57f21854c081d3, type: 2}

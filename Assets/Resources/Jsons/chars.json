@@ -154,7 +154,7 @@
       "character": "磊",
       "attackInfo": {
         "charId": 13,
-        "damage": 1.5,
+        "damage": 1.7,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -230,7 +230,7 @@
       "character": "焚",
       "attackInfo": {
         "charId": 20,
-        "damage": 1.5,
+        "damage": 1.7,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -250,7 +250,7 @@
       "character": "焱",
       "attackInfo": {
         "charId": 22,
-        "damage": 1.5,
+        "damage": 1.7,
         "heal": 0,
         "buff": null,
         "debuff": null
@@ -270,7 +270,7 @@
       "character": "淼",
       "attackInfo": {
         "charId": 24,
-        "damage": 1.5,
+        "damage": 1.7,
         "heal": 0,
         "buff": null,
         "debuff": null

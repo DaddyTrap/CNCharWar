@@ -29,7 +29,6 @@ public class BattleControl : MonoBehaviour {
 		yield return new WaitUntil(()=>{
 			return battling;
 		});
-		Debug.Log("加入字");
 		banner.AddWord(CharManager.instance.GetRandomCharacter());
 		yield return new WaitForSeconds(bannerInterval);
 		StartCoroutine(GenerateNewChar());
@@ -44,6 +43,10 @@ public class BattleControl : MonoBehaviour {
 			player.OnDead += PlayerDeadHandler;
 			player.OnAttack += PlayerAttackHandler;
 		}
+
+		banner.AddWord("开");
+		banner.AddWord("火");
+		banner.AddWord(CharManager.instance.GetRandomCharacter());
 
 		NextBattle();
 		StartCoroutine(GenerateNewChar());
@@ -243,9 +246,10 @@ public class BattleControl : MonoBehaviour {
 	int deadEnenmy = 0;
 	void EnemyDeadHandler() {
 		++deadEnenmy;
-		Debug.Log("敌人死亡");
+		Debug.Log("敌人死亡 " + deadEnenmy);
 		if (deadEnenmy >= enemies.Count) {
 			// 所有敌人死亡
+			deadEnenmy = 0;
 			HandleWin();
 		}
 	}
@@ -276,7 +280,6 @@ public class BattleControl : MonoBehaviour {
 	// bool canNext = false;
 	void HandleWin() {
 		// 显示胜利提示等
-		deadEnenmy = 0;
 		Debug.Log("本场Battle胜利");
 		// canNext = true;
 		if (currentBattleIndex >= battles.Length - 1) {
