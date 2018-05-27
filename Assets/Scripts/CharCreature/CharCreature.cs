@@ -56,9 +56,10 @@ public class CharCreature : MonoBehaviour {
 
 
 	}
-
+    public int slotsize = 0;
 
 	void Update() {
+        slotsize = curSlotSize;
 		var newDeltaInfo = new CharCreatureInfo(0, 0, 0);
 		for(int i = buffs.Count - 1; i >= 0; --i) {
 			buffs[i].pastTime += Time.deltaTime;
@@ -130,6 +131,7 @@ public class CharCreature : MonoBehaviour {
         if (curSlotSize != lastCurSlotSize) {//!!!
 			if (this.OnCurSlotSizeChanged != null)
 				this.OnCurSlotSizeChanged(curSlotSize);
+            Debug.Log("changed!");//改变！
 		}
 	}
 
