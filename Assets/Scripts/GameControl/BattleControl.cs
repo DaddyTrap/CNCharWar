@@ -181,7 +181,9 @@ public class BattleControl : MonoBehaviour {
 		}
 
 		// 开始游戏
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+		if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) ||
+				 Input.GetMouseButtonDown(0)
+		) {
 			battling = true;
 		}
 	}

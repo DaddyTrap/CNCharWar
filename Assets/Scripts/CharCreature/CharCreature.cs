@@ -98,7 +98,7 @@ public class CharCreature : MonoBehaviour {
 	// FIXME: 所以这是冗余的，但暂时没有想到好的设计
 	public void _OnAttacked(AttackInfo attackInfo, float calDamage) {
 		var finalDamage = calDamage - curInfo.def;
-		this.Damage(calDamage);
+		this.Damage(finalDamage);
 		if (attackInfo.debuff != null) {
 			AddBuff(attackInfo.debuff);
 		}
@@ -123,6 +123,7 @@ public class CharCreature : MonoBehaviour {
 			curHp -= damage;
 		} else {
 			curHp = 0;
+			Debug.Log(gameObject.name + ": 死亡");
       if (this.OnDead != null)
         this.OnDead();
 		}
