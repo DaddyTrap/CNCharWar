@@ -93,7 +93,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public void ThinkBlow(int size)//size 是剩下的血量//!!!未测试
     {
         Debug.Log("thinkblow" + size);
-        int countRemain=0;
+        /*int countRemain=0;
         for(int i = 0; i < this.transform.childCount; ++i)
         {
             if (this.transform.GetChild(i).gameObject.activeInHierarchy == true)
@@ -103,6 +103,10 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         }
         Debug.Log("countRemain" + countRemain);
         for (int i = size-1; i < countRemain; ++i)
+        {
+            Blow();
+        }*/
+        for(int i = 0; i < size; ++i)
         {
             Blow();
         }

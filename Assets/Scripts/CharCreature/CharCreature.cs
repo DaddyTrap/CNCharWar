@@ -130,7 +130,7 @@ public class CharCreature : MonoBehaviour {
             this.OnHpChanged(curHp / curInfo.maxHp);//发射此时HP占比
         if (curSlotSize != lastCurSlotSize) {//!!!
 			if (this.OnCurSlotSizeChanged != null)
-				this.OnCurSlotSizeChanged(curSlotSize);
+				this.OnCurSlotSizeChanged(lastCurSlotSize-curSlotSize);
             Debug.Log("changed!");//改变！
 		}
 	}
