@@ -13,7 +13,10 @@ public class WinOrFail : MonoBehaviour {
 
     public void Start()
     {
-        showWinUI();
+        WinImage.gameObject.SetActive(false);
+        WinPanel.SetActive(false);
+        LoseImage.gameObject.SetActive(false);
+        LosePanel.gameObject.SetActive(false);
     }
 
     public void showWinUI()
