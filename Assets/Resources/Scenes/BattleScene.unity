@@ -823,12 +823,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4190926664875950, guid: e9df91a587be27942bde47f90ba3a206,
     type: 2}
   m_PrefabInternal: {fileID: 504058619}
---- !u!114 &504058621 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114242025072364168, guid: e9df91a587be27942bde47f90ba3a206,
-    type: 2}
-  m_PrefabInternal: {fileID: 504058619}
-  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
 --- !u!1 &703166244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,12 +1162,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4190926664875950, guid: e9df91a587be27942bde47f90ba3a206,
     type: 2}
   m_PrefabInternal: {fileID: 858783604}
---- !u!114 &858783606 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114242025072364168, guid: e9df91a587be27942bde47f90ba3a206,
-    type: 2}
-  m_PrefabInternal: {fileID: 858783604}
-  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
 --- !u!1 &869568400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,11 +1292,8 @@ MonoBehaviour:
     - {fileID: 1788586000}
   - battleEnemies:
     - {fileID: 986416831}
-    - {fileID: 1111406909}
   - battleEnemies:
-    - {fileID: 858783606}
     - {fileID: 82799029}
-    - {fileID: 504058621}
   - battleEnemies:
     - {fileID: 1594404577}
   winOrFail: {fileID: 252135001}
@@ -1578,12 +1563,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4177126167745366, guid: fc26f4c2ca563244bace924375b627dc,
     type: 2}
   m_PrefabInternal: {fileID: 1111406907}
---- !u!114 &1111406909 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114003055003902340, guid: fc26f4c2ca563244bace924375b627dc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1111406907}
-  m_Script: {fileID: 11500000, guid: c3e91bfb38cef414b92e364bb6e4925d, type: 3}
 --- !u!114 &1151240307 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114046037665927142, guid: 27410f6d2681bb04082c5f552c94d221,
@@ -1741,6 +1720,16 @@ Prefab:
     - target: {fileID: 1167462059141222, guid: f27ea1f7cc3fafe4288cfa45abf51cfd, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658943532734702, guid: f27ea1f7cc3fafe4288cfa45abf51cfd,
+        type: 2}
+      propertyPath: attackSequence.Array.data[1].charId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114658943532734702, guid: f27ea1f7cc3fafe4288cfa45abf51cfd,
+        type: 2}
+      propertyPath: attackSequence.Array.data[0].charId
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f27ea1f7cc3fafe4288cfa45abf51cfd, type: 2}

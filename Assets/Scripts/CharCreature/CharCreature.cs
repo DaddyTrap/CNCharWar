@@ -14,6 +14,7 @@ public class CharCreature : MonoBehaviour {
 		}
 	}
 
+	public bool dead = false;
 
     public CharCreatureInfo curInfo {
 		get { return basicInfo + deltaInfo; }
@@ -118,13 +119,16 @@ public class CharCreature : MonoBehaviour {
 
 	public virtual void Damage(float damage) {
     int lastCurSlotSize = curSlotSize;
-
+		if (damage < 0) {
+			return;
+		}
     // Deal Damage
 		if (curHp - damage > 0) {
 			curHp -= damage;
 		} else {
 			curHp = 0;
 			Debug.Log(gameObject.name + ": 死亡");
+			dead = true;
       if (this.OnDead != null)
         this.OnDead();
 		}

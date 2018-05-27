@@ -250,7 +250,16 @@ public class BattleControl : MonoBehaviour {
 		if (deadEnenmy >= enemies.Count) {
 			// 所有敌人死亡
 			deadEnenmy = 0;
-			HandleWin();
+			var allDead = true;
+			for (int i = 0; i < enemies.Count; ++i) {
+				if (!enemies[i].dead) {
+					allDead = false;
+					break;
+				}
+			}
+			if (allDead) {
+				HandleWin();
+			}
 		}
 	}
 
