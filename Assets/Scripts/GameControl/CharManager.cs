@@ -201,7 +201,7 @@ public class CharManager : MonoBehaviour {
 
 
     public string GetRandomCharacter() {
-		var random = Random.Range(0, basicCharIds.Count - 1);
+		var random = Random.Range(0, basicCharIds.Count);
 		return characterDict[basicCharIds[random]];
 	}
 

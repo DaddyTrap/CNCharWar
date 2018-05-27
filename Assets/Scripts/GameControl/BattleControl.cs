@@ -106,7 +106,7 @@ public class BattleControl : MonoBehaviour {
 			// var id = 1;
 			var strs = CharManager.instance.idToStringsDict[id];
 			var charName = CharManager.instance.GetCharacterById(id);
-			Debug.Log(CharEffectManager.instance.effectDict[charName]);
+			Debug.Log(charName);
 			if (strs.Count >= 2 && strs.Count < 4) {
 				// 如果能使用拼字效果，则播放拼字效果
 				Debug.Log("拼字效果");
@@ -149,7 +149,7 @@ public class BattleControl : MonoBehaviour {
 		// 播放音效
 		if (attackInfo.heal == 0) {
 			// 随机播放某一个“石”音效
-			var rnd = Random.Range(1, 3);
+			var rnd = Random.Range(1, 4);
 			var seName = "石" + " (" + rnd + ")";
 			Debug.Log(seName);
 			MusicManager.instance.PlaySE(seName);
@@ -276,6 +276,7 @@ public class BattleControl : MonoBehaviour {
 	// bool canNext = false;
 	void HandleWin() {
 		// 显示胜利提示等
+		deadEnenmy = 0;
 		Debug.Log("本场Battle胜利");
 		// canNext = true;
 		if (currentBattleIndex >= battles.Length - 1) {
