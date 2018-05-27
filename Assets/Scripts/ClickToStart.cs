@@ -16,6 +16,7 @@ public class ClickToStart : MonoBehaviour
 
     public void ClickStart()
     {
+        MusicManager.instance.PlaySE("click");
         Animation[] Animations1 = start.GetComponentsInChildren<Animation>();
         for(int i = 0; i < Animations1.Length; i++)
         {

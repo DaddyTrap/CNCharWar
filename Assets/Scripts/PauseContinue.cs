@@ -18,6 +18,7 @@ public class PauseContinue : MonoBehaviour {
 
     public void pause()
     {
+        MusicManager.instance.PlaySE("click");
         PauseImage.gameObject.SetActive(true);
         PausePanel.SetActive(true);
         battleControl.battling = false;
@@ -25,6 +26,7 @@ public class PauseContinue : MonoBehaviour {
 
     public void ExitPause()
     {
+        MusicManager.instance.PlaySE("click");
         PauseImage.gameObject.SetActive(false);
         PausePanel.SetActive(false);
         battleControl.battling = true;
@@ -32,6 +34,7 @@ public class PauseContinue : MonoBehaviour {
 
     public void backToStart()
     {
+        MusicManager.instance.PlaySE("click");
         SceneManager.LoadScene("TitleScene");
     }
 }

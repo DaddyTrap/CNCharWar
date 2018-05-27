@@ -6,6 +6,7 @@ public class AudioIntoBattle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        MusicManager.instance.StopBGM();
         MusicManager.instance.PlayBGM("ling_battlebgm");	
     }
 }
