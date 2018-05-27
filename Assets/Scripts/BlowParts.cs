@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     public int currentPart;//
-    public bool canBlow=false;
+    //public bool canBlow=false;
     public bool goShake = false;
     public bool goExplode = false;
     public float waitSeconds=3f;
     public GameObject Explosion;//爆炸的粒子效果
     public Sprite Remaining;//遗留下来的墨水
+    public Queue<int> ToBlow;//一个存储子女中要被吹飞的id的队列
 	// Use this for initialization
 	void Start () {
+        ToBlow = new Queue<int>();
         this.GetComponent<Enemy>().OnCurSlotSizeChanged += ThinkBlow;//订阅
         this.GetComponent<Enemy>().OnDead += Explode;//订阅死亡事件
         currentPart = 0;
@@ -20,11 +22,12 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
 
     // Update is called once per frame
     void Update () {
-        if (canBlow == true)
+        while (ToBlow.Count!=0)
         {
-            GameObject stand =Instantiate( this.transform.GetChild(currentPart).gameObject);//创建一个替身
-            stand.transform.position = this.transform.GetChild(currentPart).transform.position;//替身与本体坐标一致
-            this.transform.GetChild(currentPart).gameObject.SetActive(false);//让本体隐藏
+            int temp = ToBlow.Dequeue();
+            GameObject stand =Instantiate( this.transform.GetChild(temp).gameObject);//创建一个替身
+            stand.transform.position = this.transform.GetChild(temp).transform.position;//替身与本体坐标一致
+            this.transform.GetChild(temp).gameObject.SetActive(false);//让本体隐藏
             stand.AddComponent<Rigidbody2D>();//给替身添加刚体部件
             stand.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-15, 15), Random.Range(0, 20));//给刚体替身一个速度
             stand.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);//给刚体替身一个角速度
@@ -37,8 +40,7 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
             this.transform.GetChild(currentPart).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);
             this.transform.GetChild(currentPart).GetComponent<Rigidbody2D>().drag = 0.3f;
             StartCoroutine(FadeOutInDelay(this.transform.GetChild(currentPart).gameObject));*/
-            canBlow = false;
-            currentPart++;
+
         }
         if (goExplode == true)
         {
@@ -47,14 +49,10 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         }
         if (goShake == true)
         {
-            //StartCoroutine();
             
             this.transform.position += new Vector3(Random.Range(-0.02f, 0.02f), Random.Range(-0.02f, 0.02f), 0);
         }
-        /*if (Input.GetButtonDown("Fire1"))//测试用！
-        {
-            Blow();
-        }*/
+
 
 	}
     IEnumerator ExplodeInDelay()
@@ -109,13 +107,16 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
         for(int i = 0; i < size; ++i)
         {
             Blow();
+            Debug.Log("1");
         }
     }
     public void Blow()
     {
-        if (currentPart < this.transform.childCount - 1) {//如果此时可以炸飞一个部件!!最后一个部件要用Explode来处理
-            canBlow = true;
+        if (currentPart < this.transform.childCount-1) {//如果此时可以炸飞一个部件!!最后一个部件要用Explode来处理
+           // canBlow = true;
             Debug.Log("真的要blow了");
+            ToBlow.Enqueue(currentPart);
+            currentPart++;
         }
         else
         {
@@ -127,6 +128,6 @@ public class BlowParts : MonoBehaviour {//需要配合collider（poly）
     {
         goShake = true;
         goExplode = true;
-        this.GetComponent<Enemy>().OnDead -= Explode;
+        //this.GetComponent<Enemy>().OnDead -= Explode;
     }
 }
