@@ -430,6 +430,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1858697672}
+    - target: {fileID: 114544540695807522, guid: 27410f6d2681bb04082c5f552c94d221,
+        type: 2}
+      propertyPath: battleControl
+      value: 
+      objectReference: {fileID: 872446554}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27410f6d2681bb04082c5f552c94d221, type: 2}
   m_IsPrefabParent: 0
