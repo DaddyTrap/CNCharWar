@@ -19,10 +19,10 @@ public class CharManager : MonoBehaviour {
 	void Awake() {
 		if (!instance_) {
 			instance_ = this;
-		} else {
+            Init();
+        } else {
 			this.enabled = false;
 		}
-		Init();
 	}
 	#endregion
 
