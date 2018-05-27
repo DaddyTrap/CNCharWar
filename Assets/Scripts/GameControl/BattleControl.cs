@@ -70,6 +70,7 @@ public class BattleControl : MonoBehaviour {
 				player.Attack(res);
 			if (OnCharacterFind != null)
 				OnCharacterFind(instance.SearchAttackCharacterByStrings(chars));//发送发现新字消息给DictionaryController;ZYQ添加
+            Debug.Log("字"+instance.SearchAttackCharacterByStrings(chars));
 		}
 	}
 
