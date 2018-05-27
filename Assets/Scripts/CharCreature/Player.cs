@@ -6,7 +6,7 @@ public class Player : CharCreature {
     public void Start()
     {
         this.gameObject.GetComponent<Animator>().SetTrigger("attack");
-        this.OnDead += GoDown;
+        // this.OnDead += GoDown;
     }
     public override void SetIdleAnim()
     {
@@ -16,10 +16,10 @@ public class Player : CharCreature {
     {
         this.gameObject.GetComponent<Animator>().SetBool("isStop", true);
     }
-    public void GoDown()
-    {
+    // public void GoDown()
+    // {
 
-        this.OnDead -= GoDown;//取消监听
-    }
+    //     this.OnDead -= GoDown;//取消监听
+    // }
 
 }
